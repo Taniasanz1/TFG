@@ -1,4 +1,4 @@
-# kick-that
+# yumming
 
 ## Project setup
 ```
