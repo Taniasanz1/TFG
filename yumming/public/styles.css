@@ -1,0 +1,360 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: rgb(255, 255, 255);
+  margin: 0 auto;
+  width: 100%;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  float: left;
+}
+
+footer {
+  height: 15rem;
+  width: 100%;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-around;
+}
+footer .menu-footer-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-basis: 30%;
+  padding-left: 3rem;
+  gap: 1.5rem;
+}
+footer .menu-footer-1 p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+footer .menu-footer-2 {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  gap: 3rem;
+}
+footer .menu-footer-2 h3 {
+  text-align: center;
+}
+footer .menu-footer-2 li {
+  padding-top: 1rem;
+  list-style: none;
+  text-align: center;
+}
+
+.header {
+  width: 60%;
+  margin-left: 3rem;
+  padding-top: 3rem;
+  position: absolute;
+  z-index: 10;
+}
+.header .menu-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header .menu-home .menu {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: space-around;
+}
+.header .menu-home .menu li a {
+  text-decoration: none;
+  color: black;
+}
+.header .menu-home .menu li a.selected {
+  color: blue;
+}
+
+.front-page-1 {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;
+  height: 50rem;
+}
+.front-page-1 .home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.front-page-1 .home .title-home-1 {
+  font-family: fantasy;
+  font-size: 60px;
+  color: rgb(51, 95, 86);
+  text-align: center;
+}
+.front-page-1 .home p {
+  text-align: center;
+  margin: auto;
+}
+.front-page-1 .home .buttons_home {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.front-page-1 .home .buttons_home .button_home_1 {
+  width: 7rem;
+  height: 3.5rem;
+  background-color: darkolivegreen;
+  border-color: rgb(165, 165, 157);
+}
+.front-page-1 .home .buttons_home .button_home_2 {
+  width: 7rem;
+  height: 3.5rem;
+  border-color: rgb(165, 165, 157);
+}
+.front-page-1 .front-image-1 {
+  width: 100%;
+}
+.front-page-1 .front-image-1 img {
+  max-width: 100%;
+}
+
+.front-page-2 {
+  height: 40rem;
+  width: 100%;
+  background-color: rgb(41, 37, 37);
+  display: flex;
+  position: relative;
+  padding-top: 10rem;
+}
+.front-page-2 .title-home-2 {
+  font-family: fantasy;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+.front-page-2 .front-image-2 {
+  width: 100%;
+}
+.front-page-2 .front-image-2 img {
+  max-width: 100%;
+}
+.front-page-2 .benefits-home {
+  display: flex;
+  list-style: none;
+  font-size: 15px;
+  margin-top: 6rem;
+  justify-content: space-between;
+  color: white;
+  text-align: center;
+}
+.front-page-2 .box_home {
+  position: absolute;
+  width: 20rem;
+  height: 15rem;
+  background-color: rgb(79, 167, 137);
+  right: 4rem;
+  top: -20%;
+  margin: auto;
+}
+.front-page-2 .title-box {
+  font-family: fantasy;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin: auto;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.main-menus {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;
+  height: 50rem;
+}
+.main-menus .day {
+  display: flex;
+  flex-direction: column;
+}
+.main-menus .day .meals {
+  display: flex;
+  flex-direction: column;
+}
+.main-menus .day .meals #each_meal {
+  border: 1px solid black;
+  border-color: gray;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.gallery {
+  width: 100%;
+}
+
+.galley-container {
+  align-items: center;
+  display: flex;
+  height: 400px;
+  margin: 0 auto;
+  max-width: 1000px;
+  position: relative;
+}
+
+.gallery-item {
+  height: 200px;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  width: 330px;
+  z-index: 8;
+  border-radius: 15px;
+  background-size: contain;
+}
+
+.gallery-item-1 {
+  left: 15%;
+  opacity: 0.4;
+  transform: translateX(-50%);
+}
+
+.gallery-item-2,
+.gallery-item-4 {
+  height: 250px;
+  opacity: 0.8;
+  width: 380px;
+  z-index: 1;
+}
+
+.gallery-item-2 {
+  left: 30%;
+  transform: translateX(-50%);
+}
+
+.gallery-item-3 {
+  box-shadow: -2px 5px 33px 6px rgba(0, 0, 0, 0.25);
+  height: 300px;
+  opacity: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 430px;
+  z-index: 2;
+}
+
+.gallery-item-4 {
+  left: 70%;
+  transform: translateX(-50%);
+}
+
+.gallery-item-5 {
+  left: 85%;
+  opacity: 0.4;
+  transform: translateX(-50%);
+}
+
+.gallery-controls {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+  height: 100px;
+}
+
+.gallery-controls button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 50px;
+  margin: 0 50px;
+  padding: 0 12px;
+  text-transform: capitalize;
+}
+
+.gallery-controls-button:focus {
+  cutline: none;
+}
+
+.gallery-controls-previous {
+  position: relative;
+}
+
+.gallery-controls-previous::before {
+  border: solid #000;
+  border-width: 0 5px 5px 0;
+  content: "";
+  display: inline-block;
+  height: 5px;
+  width: 5px;
+  left: -30px;
+  padding: 10px;
+  position: absolute;
+  top: 25%;
+  transform: rotate(135deg) translateY(-50%);
+  transition: left 0.15s ease-in-out;
+  width: 5px;
+}
+
+.gallery-controls-previous::before {
+  left: -40px;
+}
+
+.gallery-controls-next {
+  position: relative;
+}
+
+.gallery-controls-next::before {
+  border: solid #000;
+  border-width: 0 5px 5px 0;
+  content: "";
+  display: inline-block;
+  height: 5px;
+  padding: 10px;
+  position: absolute;
+  right: -30px;
+  top: 45;
+  transform: rotate(-45deg) translateY(-50%);
+  transition: right 0.15s ease-in-out;
+  width: 5px;
+}
+
+.gallery-controls-next:hover::before {
+  right: -48px;
+}
+
+.gallery-nav {
+  bottom: 15px;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.gallery nav li {
+  background: #ccc;
+  border-radius: 50%;
+  height: 10px;
+  margin: 0 15px;
+  width: 10px;
+}
+
+.gallery-nac li.gallery-item-selected {
+  background: #555;
+}
+
+/*# sourceMappingURL=styles.css.map */
