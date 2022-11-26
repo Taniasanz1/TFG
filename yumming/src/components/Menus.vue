@@ -1,77 +1,38 @@
 <template>
     <div class="main-menus">
-        <div class="day">
-            <h3>Lunes</h3>
-            <div class="meals">
-                <div class="breakfast" id="each_meal">
-                    <h4>Desayuno</h4>
-                    <img src="../../public/assets/breakfast-monday.jpg" alt="" width="100" height="150">
-                    <p>Tostada con huevo y aguacate</p>
-                </div>
-                <div class="lunch" id="each_meal">
-                    <h4>Comida</h4>
-                    <img src="../../public/assets/lunch-monday.jpg" alt="" width="100" height="150">
-                    <p>Ensalada fit-cesar</p>
-                </div>
-                <div class="afternoon-snack" id="each_meal">
-                    <h4>Merienda</h4>
-                    <img src="../../public/assets/snack-monday.jpg" alt="" width="100" height="150">
-                    <p>Tostadas con crema de cacahuete y arándanos</p>
-                </div>
-                <div class="dinner" id="each_meal">
-                    <h4>Merienda</h4>
-                    <img src="../../public/assets/dinner-monday.jpg" alt="" width="100" height="150">
-                    <p>Albóndigas de pavo con salsa de tomate</p>
-                </div>
-            </div>
-        </div>
-        <div class="day">
-            <h3>Martes</h3>
-            <div class="meals">
-                <div class="breakfast" id="each_meal">
-                    <h4>Desayuno</h4>
-                    <img src="../../public/assets/breakfast-tuesday.jpg" alt="" width="100" height="150">
-                    <p>Tortitas de avena con arándanos</p>
-                </div>
-                <div class="lunch" id="each_meal">
-                    <h4>Comida</h4>
-                    <img src="../../public/assets/lunch-tuesday.jpg" alt="" width="100" height="150">
-                    <p>Salmón a la naranja</p>
-                </div>
-                <div class="afternoon-snack" id="each_meal">
-                    <h4>Merienda</h4>
-                    <img src="../../public/assets/snack-tuesday.jpg" alt="" width="100" height="150">
-                    <p>Yogur natural con frutos rojos y almendras</p>
-                </div>
-                <div class="dinner" id="each_meal">
-                    <h4>Merienda</h4>
-                    <img src="../../public/assets/dinner-tuesday.jpg" alt="" width="100" height="150">
-                    <p>Berenjena rellena de ricotta y setas</p>
-                </div>
-            </div>
-        </div>
-        <div class="day">
-            <h3>Miércoles</h3>
-            <div class="meals">
-                <div class="breakfast" id="each_meal">
-                    <h4>Desayuno</h4>
-                    <img src="../../public/assets/breakfast-wednesday.jpg" alt="" width="100" height="150">
-                    <p>Bol de avena con fruta</p>
-                </div>
-                <div class="lunch" id="each_meal">
-                    <h4>Comida</h4>
-                    <img src="../../public/assets/lunch-wednesday.jpg" alt="" width="100" height="150">
-                    <p>Ensalada fit-cesar</p>
-                </div>
-                <div class="afternoon-snack" id="each_meal">
-                    <h4>Merienda</h4>
-                    <img src="../../public/assets/snack-wednesday.jpg" alt="" width="100" height="150">
-                    <p>Gofres integrales con sirope de ágave</p>
-                </div>
-                <div class="dinner" id="each_meal">
-                    <h4>Merienda</h4>
-                    <img src="../../public/assets/dinner-wednesday.jpg" alt="" width="100" height="150">
-                    <p>Berenjena rellena de ricotta y setas</p>
+        <div v-if="loading">Loading...</div>
+        <div v-else v-for="menu of menus" :key="menu.id">
+            <div class="day">
+                <h3>{{ menu.day }}</h3>
+                <div class="meals">
+                    <div class="meal-item">
+                        <h4>Desayuno</h4>
+                        <div class="img-container">
+                            <img class="img-item" :src="menu.imgBreakfast" alt="" width="100" height="150" />
+                        </div>
+                        <p>{{ menu.breakfast }}</p>
+                    </div>
+                    <div class="meal-item">
+                        <h4>Comida</h4>
+                        <div class="img-container">
+                            <img class="img-item" :src="menu.imgLunch" alt="" width="100" height="150" />
+                        </div>
+                        <p>{{ menu.lunch }}</p>
+                    </div>
+                    <div class="meal-item">
+                        <h4>Merienda</h4>
+                        <div class="img-container">
+                            <img class="img-item" :src="menu.imgSnack" alt="" width="100" height="150" />
+                        </div>
+                        <p>{{ menu.snack }}</p>
+                    </div>
+                    <div class="meal-item">
+                        <h4>Cena</h4>
+                        <div class="img-container">
+                            <img class="img-item" :src="menu.imgDinner" alt="" width="100" height="150" />
+                        </div>
+                        <p>{{ menu.dinner }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,6 +41,26 @@
 <script>
 
 export default {
-    name: 'Menus'
+    data() {
+        return {
+            name: 'Menus',
+            menus: [],
+            loading: true,
+
+        }
+    },
+    created() {
+        this.getMenus();
+
+    },
+    methods: {
+        async getMenus() {
+            const response = await fetch('http://localhost:8081/menus', {
+                method: 'GET'
+            }).then(res => res.json());
+            this.menus = response.menus;
+            this.loading = false;
+        }
+    }
 }
 </script>

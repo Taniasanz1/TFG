@@ -16,13 +16,22 @@
             width: 100%;
             justify-content: space-around;
 
+            .button {
+
+                &:hover,
+                &.router-link-exact-active {
+                    background-color: $header-link-color;
+                    color: $header-active-link-color;
+                }
+
+                &.router-link-exact-active {
+                    color: rgb(158, 32, 53);
+                }
+            }
+
             li a {
                 text-decoration: none;
                 color: $header-link-color;
-
-                &.selected {
-                    color: $header-active-link-color;
-                }
             }
         }
     }

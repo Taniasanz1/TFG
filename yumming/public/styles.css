@@ -184,39 +184,51 @@ footer .menu-footer-2 li {
 .main-menus .day {
   display: flex;
   flex-direction: column;
+  width: 15rem;
 }
 .main-menus .day .meals {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
-.main-menus .day .meals #each_meal {
+.main-menus .day .meals .meal-item {
   border: 1px solid black;
-  border-color: gray;
+  border-color: rgba(128, 128, 128, 0.582);
+  padding: 1rem;
+  box-shadow: -1px 0px 4px gray;
 }
-
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.main-menus .day .meals .meal-item .img-container {
+  width: 12rem;
+  height: 5rem;
+  overflow: hidden;
+  margin: 10px;
+  position: relative;
+}
+.main-menus .day .meals .meal-item .img-container .img-item {
+  object-fit: contain;
+  position: absolute;
+  left: -100%;
+  right: -100%;
+  top: -100%;
+  bottom: -100%;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
 }
 
 .gallery {
   width: 100%;
-}
-
-.galley-container {
-  align-items: center;
   display: flex;
-  height: 400px;
-  margin: 0 auto;
-  max-width: 1000px;
-  position: relative;
+  flex-direction: column;
+  max-width: 100%;
+  height: 40rem;
+  justify-content: center;
+  margin-top: 8rem;
 }
-
-.gallery-item {
+.gallery .gallery-container {
+  height: 20rem;
+}
+.gallery .gallery-container .gallery-item {
   height: 200px;
   opacity: 0;
   position: absolute;
@@ -226,27 +238,23 @@ body {
   border-radius: 15px;
   background-size: contain;
 }
-
-.gallery-item-1 {
+.gallery .gallery-container .gallery-item-1 {
   left: 15%;
   opacity: 0.4;
   transform: translateX(-50%);
 }
-
-.gallery-item-2,
-.gallery-item-4 {
+.gallery .gallery-container .gallery-item-2,
+.gallery .gallery-container .gallery-item-4 {
   height: 250px;
   opacity: 0.8;
   width: 380px;
   z-index: 1;
 }
-
-.gallery-item-2 {
+.gallery .gallery-container .gallery-item-2 {
   left: 30%;
   transform: translateX(-50%);
 }
-
-.gallery-item-3 {
+.gallery .gallery-container .gallery-item-3 {
   box-shadow: -2px 5px 33px 6px rgba(0, 0, 0, 0.25);
   height: 300px;
   opacity: 1;
@@ -255,26 +263,21 @@ body {
   width: 430px;
   z-index: 2;
 }
-
-.gallery-item-4 {
+.gallery .gallery-container .gallery-item-4 {
   left: 70%;
   transform: translateX(-50%);
 }
-
-.gallery-item-5 {
+.gallery .gallery-container .gallery-item-5 {
   left: 85%;
   opacity: 0.4;
   transform: translateX(-50%);
 }
-
-.gallery-controls {
+.gallery .gallery-controls {
   display: flex;
   justify-content: center;
-  margin: 25px 0;
   height: 100px;
 }
-
-.gallery-controls button {
+.gallery .gallery-controls button {
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -283,19 +286,12 @@ body {
   padding: 0 12px;
   text-transform: capitalize;
 }
-
-.gallery-controls-button:focus {
-  cutline: none;
-}
-
-.gallery-controls-previous {
+.gallery .gallery-controls-previous {
   position: relative;
 }
-
-.gallery-controls-previous::before {
+.gallery .gallery-controls-previous::before {
   border: solid #000;
   border-width: 0 5px 5px 0;
-  content: "";
   display: inline-block;
   height: 5px;
   width: 5px;
@@ -307,19 +303,15 @@ body {
   transition: left 0.15s ease-in-out;
   width: 5px;
 }
-
-.gallery-controls-previous::before {
+.gallery .gallery-controls-previous::before {
   left: -40px;
 }
-
-.gallery-controls-next {
+.gallery .gallery-controls-next {
   position: relative;
 }
-
-.gallery-controls-next::before {
+.gallery .gallery-controls-next::before {
   border: solid #000;
   border-width: 0 5px 5px 0;
-  content: "";
   display: inline-block;
   height: 5px;
   padding: 10px;
@@ -330,12 +322,10 @@ body {
   transition: right 0.15s ease-in-out;
   width: 5px;
 }
-
-.gallery-controls-next:hover::before {
+.gallery .gallery-controls-next:hover::before {
   right: -48px;
 }
-
-.gallery-nav {
+.gallery .gallery-nav {
   bottom: 15px;
   display: flex;
   justify-content: center;
@@ -344,16 +334,14 @@ body {
   position: absolute;
   width: 100%;
 }
-
-.gallery nav li {
+.gallery .gallery nav li {
   background: #ccc;
   border-radius: 50%;
   height: 10px;
   margin: 0 15px;
   width: 10px;
 }
-
-.gallery-nac li.gallery-item-selected {
+.gallery .gallery-nav li.gallery-item-selected {
   background: #555;
 }
 

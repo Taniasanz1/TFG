@@ -2,18 +2,22 @@ import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 
+//componentes 
 import App from './App.vue'
 import Home from './components/Home.vue'
+import Login from './components/Login.vue'
 import Menus from './components/Menus.vue'
 import Entrenamientos from './components/Entrenamientos.vue'
 import './sass/main.scss'
 
-//componentes 
 
 //definir objeto rutas
 const routes = [
     {
         path: '/', component: Home,
+    },
+    {
+        path: '/login', component: Login,
     },
     {
         path: '/menus', component: Menus,

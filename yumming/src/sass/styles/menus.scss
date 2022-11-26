@@ -10,14 +10,40 @@
     .day {
         display: flex;
         flex-direction: column;
+        width: 15rem;
 
         .meals {
             display: flex;
             flex-direction: column;
+            gap: 1rem;
 
-            #each_meal {
+
+            .meal-item {
                 border: 1px solid black;
-                border-color: gray;
+                border-color: rgba(128, 128, 128, 0.582);
+                padding: 1rem;
+                box-shadow: -1px 0px 4px gray;
+
+                .img-container {
+
+                    width: 12rem;
+                    height: 5rem;
+                    overflow: hidden;
+                    margin: 10px;
+                    position: relative;
+
+                    .img-item {
+                        object-fit: contain;
+                        position: absolute;
+                        left: -100%;
+                        right: -100%;
+                        top: -100%;
+                        bottom: -100%;
+                        margin: auto;
+                        min-height: 100%;
+                        min-width: 100%;
+                    }
+                }
             }
         }
     }
