@@ -17,21 +17,24 @@
             justify-content: space-around;
 
             .button {
+                color: black;
 
                 &:hover,
                 &.router-link-exact-active {
-                    background-color: $header-link-color;
-                    color: $header-active-link-color;
+                    color: black;
+                    border-bottom-color: rgb(77, 73, 73);
                 }
 
-                &.router-link-exact-active {
-                    color: rgb(158, 32, 53);
-                }
             }
 
             li a {
+                font-family: 'Cormorant Garamond';
+                font-size: 20px;
                 text-decoration: none;
                 color: $header-link-color;
+                display: inline-block;
+                padding-bottom: 5px;
+                border-bottom: 1.75px solid transparent;
             }
         }
     }

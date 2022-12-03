@@ -1,5 +1,206 @@
-.form {
-    width: 100%;
-    background-color: $login-background;
-    height: 100%;
+// body {
+//     height: 30rem;
+//     justify-content: center;
+
+//     .form {
+//         width: 50%;
+//         background-color: #ccc;
+//         margin: auto;
+//         padding: 1.5rem 0 1.5rem 0;
+//         border-radius: 10px;
+//         margin-top: 4rem;
+
+//         .form-title {
+//             padding-bottom: 1rem;
+//         }
+
+//         input[type="text"],
+//         input[type="email"],
+//         input[type="password"] {
+//             width: 180px;
+//             padding: 3px 10px;
+//             border: 1px solid #f6f6f6;
+//             border-radius: 3px;
+//             background-color: #f6f6f6;
+//             margin: 8px 0;
+//             display: inline-block;
+//         }
+
+//         .login {
+//             display: flex;
+//             flex-direction: column;
+//             margin: 0 auto;
+
+//         }
+
+//         .register {
+//             display: flex;
+//             flex-direction: column;
+//             margin: 0 auto;
+
+//         }
+
+//         button {
+
+//             width: 100%;
+//             padding: 8px 16px;
+//             margin-top: 32px;
+//             border: 1px solid #000;
+//             border-radius: 5px;
+//             display: block;
+//             color: #fff;
+//             background-color: #000;
+
+//         }
+
+//         button:hover {
+//             cursor: pointer;
+//         }
+//     }
+// }
+
+
+
+p {
+    line-height: 1rem;
+}
+
+.card {
+    padding: 20px;
+}
+
+.form-group {
+    input {
+        margin-bottom: 20px;
+    }
+
+}
+
+
+
+
+
+.login-page {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+
+    .wallpaper-login {
+        background: rgba(255, 255, 255, 0.438) url(https://c0.wallpaperflare.com/preview/906/427/616/meal-healthy-eating-health-minimal.jpg) no-repeat center center;
+        background-size: cover;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+    }
+
+    .container {
+        z-index: 200;
+        padding-left: 5rem;
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 180px;
+            padding: 3px 10px;
+            border: 1px solid #ffffff;
+            border-radius: 3px;
+            background-color: #e0dfdf;
+            margin: 8px 0;
+            display: inline-block;
+        }
+
+        .login {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+
+        }
+
+        .register {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+
+        }
+
+        button {
+
+            width: 100%;
+            padding: 8px 16px;
+            margin-top: 32px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            display: block;
+            color: #fff;
+            background-color: #000;
+
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+
+
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .5s;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+        opacity: 0;
+    }
+
+    .wallpaper-register {
+        background: url(https://img.freepik.com/premium-photo/supermarket-paper-bag-full-healthy-food_79782-1632.jpg?w=826) no-repeat center center;
+        background-size: cover;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+    }
+
+    h1 {
+        margin-bottom: 1.5rem;
+        // font-family: 'Nunito';
+    }
+
+    p {
+        font-family: 'Nunito';
+    }
+}
+
+.error {
+    animation-name: errorShake;
+    animation-duration: 0.3s;
+}
+
+@keyframes errorShake {
+    0% {
+        transform: translateX(-25px);
+    }
+
+    25% {
+        transform: translateX(25px);
+    }
+
+    50% {
+        transform: translateX(-25px);
+    }
+
+    75% {
+        transform: translateX(25px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }

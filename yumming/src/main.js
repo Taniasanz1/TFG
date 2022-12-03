@@ -1,9 +1,12 @@
 import { createApp } from 'vue'
+
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 
 //componentes 
 import App from './App.vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Menus from './components/Menus.vue'
@@ -38,6 +41,10 @@ const router = createRouter({
 //instancia de vue
 const app = createApp(App)
 
+app.component('Header', Header)
+    .component('Footer', Footer)
+    .component('Login', Login)
 app.use(router)
+
 
 app.mount('#app')

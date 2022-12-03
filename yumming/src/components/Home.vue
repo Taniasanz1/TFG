@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="front-image-1">
-      <img src="../../public/assets/front-breakfast.png" />
+      <img src="../../public/assets/front-breakfast1.png" width="3000" height="600" />
     </div>
   </div>
   <div class="front-page-2">
@@ -43,7 +43,6 @@ export default {
   data() {
     return {
       name: 'Home',
-
 
     }
 

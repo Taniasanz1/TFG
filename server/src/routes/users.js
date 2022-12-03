@@ -3,16 +3,6 @@ const router = express.Router();
 
 const Users = require('../models/users.model');
 
-router.get('/users', async (req, res) => {
-    const users = await Users.find();
-    console.log(users);
-    res.send(users);
-})
-
-router.get('/users/:id', async (req, res) => {
-    const usuarioDB = await Users.findOne({ email: body.email });
-    res.send(usuarioDB);
-})
 
 router.post('/users', async (req, res) => {
     const user = new Users(req.body.user);
@@ -22,9 +12,20 @@ router.post('/users', async (req, res) => {
 })
 
 
-router.put('/users/:id', async (req, res) => {
-    const user = await Users.findById(req.params.id);
-    res.send();
+router.get('/users/:email', async (req, res) => {
+    const email = req.params.email;
+    const userDB = await Users.findOne({ email });
+    const response = userDB == null ? { user: null } : { user: userDB };
+    res.send(response);
 })
+
+router.put('/users/:email', async (req, res) => {
+    const email = req.params.email;
+    const userDB = await Users.findOneAndUpdate({ email }, { isPro: true });
+    const response = userDB == null ? { user: null } : { user: userDB };
+    res.send(response);
+})
+
+
 
 module.exports = router;
