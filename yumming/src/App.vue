@@ -3,10 +3,29 @@
     <div v-if="this.isLogged.status">
       <Header />
       <div class="bienvenido">
-        <h3>¡Bienvenido {{ this.user.properties.name }}!</h3>
-        <p>¿Quieres apuntar a nuestros entrenamientos?</p>
-        <button @click="logOut()">LogOut</button>
-        <button @click="updateToPro()">¡Me apunto!</button>
+        <h3>¡Bienvenido/a {{ this.user.properties.name }}!</h3>
+        <div class="pro">
+          <p>¿Te apuntas a nuestros entrenamientos?</p>
+          <div class="love">
+            <input id="switch" type="checkbox" @click="updateToPro()">
+            <label class="love-heart" for="switch">
+              <i class="left"></i>
+              <i class="right"></i>
+              <i class="bottom"></i>
+              <div class="round"></div>
+              <!-- <button @click="updateToPro()">¡Me apunto!</button> -->
+            </label>
+          </div>
+        </div>
+        <button class="cta" @click="logOut()">
+          <span class="hover-underline-animation"> Salir</span>
+          <svg viewBox="0 0 46 16" height="10" width="30" xmlns="http://www.w3.org/2000/svg" id="arrow-horizontal">
+            <path transform="translate(30)" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+              data-name="Path 10" id="Path_10"></path>
+          </svg>
+        </button>
+        <!-- <button @click="logOut()">LogOut</button> -->
+
       </div>
       <router-view>
       </router-view>

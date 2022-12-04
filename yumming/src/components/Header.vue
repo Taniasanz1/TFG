@@ -1,7 +1,7 @@
 <template>
     <header class="header">
         <div class="menu-home">
-            <img src="../../public/assets/logo/Yumming.png" alt="" width="120" height="140">
+            <!-- <img src="../../public/assets/logo/Yumming.png" alt="" width="120" height="140"> -->
             <ul class="menu">
                 <li>
                     <router-link class="button" to="/">
