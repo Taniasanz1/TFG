@@ -14,6 +14,7 @@ import Entrenamientos from './components/Entrenamientos.vue'
 import './sass/main.scss'
 
 
+
 //definir objeto rutas
 const routes = [
     {
@@ -44,6 +45,7 @@ const app = createApp(App)
 app.component('Header', Header)
     .component('Footer', Footer)
     .component('Login', Login)
+
 app.use(router)
 
 

@@ -11,3 +11,9 @@ export const user = reactive({
     properties: { name: null, email: null, pass: null, level: null, isPro: false }
 
 })
+
+
+export const payment = reactive({
+    properties: { isPayment: false }
+
+})

@@ -1,17 +1,32 @@
 .sport {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    // align-items: center;
+    // justify-content: center;
     width: 100%;
+    flex-direction: column;
     // max-width: 100%;
-    height: 50rem;
+    height: 70rem;
+    //     background-image: url('../../public/assets/font-entrenamientos.png');
+    //     background-size: cover;
+}
+
+
+.cards-oneLine {
+    margin-top: 15rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.cards-secondLine {
+    display: flex;
+    flex-direction: row;
 }
 
 .card {
     margin: 2%;
-    background: #DBBDBD;
-    width: 15rem;
-    height: 20rem;
+    background: #d4cbcb;
+    width: 17rem;
+    height: 22rem;
     box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     transition: .2s all;
@@ -21,6 +36,12 @@
     font-size: 13px;
     padding-top: 30px;
     border-color: aliceblue;
+}
+
+.border-inside {
+    width: 15rem;
+    height: 20rem;
+    border: groove;
 }
 
 .card>div {
@@ -36,6 +57,7 @@
         font-family: 'Maven Pro';
         font-size: 20px;
         text-decoration: overline;
+        margin: auto;
     }
 
     img {
@@ -45,18 +67,215 @@
     }
 }
 
+.cardModal {
+    transform: none;
+    display: none;
+    visibility: hidden;
+}
+
 .sport:hover .card {
-    filter: blur(3px);
-    opacity: .5;
+    filter: blur(0.5px);
+    opacity: .8;
     transform: scale(.98);
     box-shadow: none;
+    background: #d4cbcb;
 }
 
 .sport:hover .card:hover {
-    transform: scale(1);
+    transform: scale(1.2);
     filter: blur(0px);
     opacity: 1;
     box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
-    background: #8b7272;
+    background: #201e1e;
     color: white;
+}
+
+.sportModal {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.modal-sport {
+    position: absolute;
+    margin: auto;
+    align-self: center;
+    justify-self: center;
+    height: 30rem;
+    width: 50rem;
+    margin-top: 5rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: groove;
+
+    h3 {
+        margin: auto;
+        font-family: 'Maven Pro';
+    }
+
+    .img-modal {
+        margin: auto;
+    }
+}
+
+.close-modal {
+    float: left;
+}
+
+.payment {
+    width: 20rem;
+    height: 25rem;
+    background: rgb(45, 45, 45);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    transition-duration: 0.5s;
+    position: absolute;
+    margin: 0 auto;
+    margin-top: 10rem;
+    border-radius: 10px;
+    margin-left: 30rem;
+
+}
+
+.title {
+    text-align: center;
+    margin-top: 0.5em;
+    font-weight: bold;
+    color: rgb(200, 200, 200);
+    font-size: 30px;
+}
+
+.pricecontainer {
+    width: 100%;
+    margin-top: 0.7em;
+    background-color: rgb(30, 30, 30);
+    box-shadow: inset 0px 0px 2em rgba(0, 0, 0, 0.3);
+}
+
+.price {
+    text-align: center;
+    color: rgb(180, 180, 180);
+    font-size: 32px;
+    font-weight: bold;
+    padding: 0.75em 0 0 0;
+}
+
+.pricedescriptor {
+    text-align: center;
+    color: rgb(118, 118, 118);
+    font-size: 25px;
+    padding: 1rem 0 1em 0;
+}
+
+.includes {
+    text-align: center;
+    color: rgb(110, 110, 110);
+    margin-top: 0.6em;
+    font-size: large;
+    font-weight: bold;
+}
+
+.benefitlist li {
+    color: rgb(150, 150, 150);
+    font-size: medium;
+    text-align: center;
+    list-style: none;
+    margin-bottom: 0.5rem;
+}
+
+.benefitlist li:nth-child(1) {
+    margin-top: 0.4em;
+}
+
+.btncontainer {
+    text-align: center;
+}
+
+.btncontainer button {
+    margin-top: 1em;
+    padding: 0.5em 0.8em 0.5em 0.8em;
+    border-style: none;
+    border-radius: 1000000px;
+    color: rgb(239, 239, 239);
+    font-size: large;
+    background-image: linear-gradient(45deg, #fe4fe1 0%, #3f00fe 100%);
+    transition: box-shadow 0.15s ease-in-out;
+}
+
+.btncontainer button:hover {
+    box-shadow: inset 0px 0px 5px rgb(0, 0, 0);
+    transition: box-shadow 0.15s ease-in-out;
+
+}
+
+.sportPayment {
+    background-color: rgba(36, 34, 34, 0.8) !important;
+    height: 40rem !important;
+}
+
+.cardPayment {
+    transform: none;
+    display: none;
+    visibility: hidden;
+}
+
+
+.form-payment {
+    width: 20rem;
+    height: 25rem;
+    background: #d4cbcb;
+    border-radius: 10px;
+    position: absolute;
+    margin: 0 auto;
+    margin-top: 10rem;
+    border-radius: 10px;
+    margin-left: 30rem;
+
+
+    .input-icons-credit {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.pago-btn {
+    text-decoration: none;
+    padding: 20px 40px;
+    font-size: 1em;
+    position: relative;
+    margin: 32px;
+    border: none;
+    background-color: #26caf8;
+    font-weight: 600;
+}
+
+.btn-1 {
+    overflow: hidden;
+    color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 0 0 0 rgba(143, 64, 248, 0.5), 0 0 0 0 rgba(39, 200, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-1::after {
+    content: "";
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    background-color: #ff3cac;
+    background-image: linear-gradient(225deg, #27d86c 0%, #26caf8 50%, #c625d0 100%);
+    z-index: -1;
+    transition: transform 0.5s ease;
+}
+
+.btn-1:hover {
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.5), -10px 10px 25px 0 rgba(39, 200, 255, 0.5);
+}
+
+btn .btn-1:hover::after {
+    transform: rotate(150deg);
 }

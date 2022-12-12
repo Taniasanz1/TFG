@@ -30,14 +30,14 @@
       <ul class="benefits-home">
 
         <li>
-          <img src="../../public/assets/muscle1.png" alt="" width="50" height="50">
+          <img src="../../public/assets/icon-home-muscle.png" alt="" width="50" height="50">
           <p>Ayuda a mantener un buen sistema en los musculos y el cuerpo. Es un potente alimento nutritivo</p>
         </li>
-        <li><img src="../../public/assets/heart.png" alt="" width="50" height="50">
+        <li><img src="../../public/assets/icon-home-heart.png" alt="" width="50" height="50">
           <p>Para mantener la salud y prevenir la aparición de muchas enfermedades hay que seguir un estilo de vida
             saludable</p>
         </li>
-        <li> <img src="../../public/assets/adn.png" alt="" width="50" height="50">
+        <li> <img src="../../public/assets/icon-home-adn.png" alt="" width="50" height="50">
           <p>Ayuda a mantener un buen sistema en los musculos y el cuerpo. Es un potente alimento nutritivo</p>
         </li>
       </ul>
