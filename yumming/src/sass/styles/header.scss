@@ -1,9 +1,11 @@
 .header {
-    width: 60%;
-    margin-left: 3rem;
-    padding-top: 3rem;
+    width: 100%;
     position: absolute;
     z-index: 10;
+    background: #3b3e43;
+    font-family: 'Maven Pro';
+    position: fixed;
+    opacity: 0.8;
 
     .menu-home {
         display: flex;
@@ -11,32 +13,189 @@
         justify-content: space-between;
 
         .menu {
+            padding-top: 1.2rem;
+            padding-bottom: 1.2rem;
             display: flex;
             list-style: none;
-            width: 100%;
+            width: 25%;
             justify-content: space-around;
 
             .button {
-                color: black;
 
                 &:hover,
                 &.router-link-exact-active {
-                    color: black;
+                    color: #f6e073;
                     border-bottom-color: rgb(77, 73, 73);
                 }
 
             }
 
             li a {
-                font-family: 'Cormorant Garamond';
-                font-size: 20px;
+                color: #f9f5ec;
                 text-decoration: none;
-                color: $header-link-color;
+                font-size: 16px;
+                text-transform: uppercase;
+                font-weight: 700;
                 display: inline-block;
-                padding-bottom: 5px;
-                border-bottom: 1.75px solid transparent;
+                width: 50px;
+                -webkit-transition: all 0.2s ease-in-out;
+                transition: all 0.2s ease-in-out;
+                letter-spacing: 2px;
             }
+
+            li a:hover {
+                color: #f6e073;
+
+            }
+        }
+
+
+        .menu .dot {
+            width: 30px;
+            height: 30px;
+            background: #f8f7f0;
+            border-radius: 50%;
+            opacity: 0;
+            -webkit-transform: translateX(30px);
+            transform: translateX(30px);
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .menu li a:nth-child(1):hover~.dot {
+            -webkit-transform: translateX(30px);
+            transform: translateX(30px);
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+            opacity: 1;
+        }
+
+        .menu li a:nth-child(2):hover~.dot {
+            -webkit-transform: translateX(110px);
+            transform: translateX(110px);
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+            opacity: 1;
+        }
+
+        .menu li a:nth-child(3):hover~.dot {
+            -webkit-transform: translateX(200px);
+            transform: translateX(200px);
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+            opacity: 1;
+        }
+
+        .menu li a:nth-child(4):hover~.dot {
+            -webkit-transform: translateX(285px);
+            transform: translateX(285px);
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+            opacity: 1;
+        }
+
+        .vl {
+            border-left: 2px solid #f8f7f0;
+            height: auto;
+            justify-content: flex-end;
         }
     }
 
 }
+
+//LOGOUT
+
+.cta {
+    border: none;
+    background: none;
+    color: #f8f7f0;
+    padding-top: 1.2rem;
+    font-family: 'Maven Pro';
+    font-weight: 700;
+    padding-left: 5rem;
+    padding-right: 1rem;
+    justify-content: flex-end;
+}
+
+.cta span {
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding-right: 15px;
+    text-transform: uppercase;
+    color: #f8f7f0;
+}
+
+.cta svg {
+    transform: translateX(-4px);
+    transition: all 0.3s ease;
+    color: #f8f7f0;
+}
+
+.cta:hover svg {
+    transform: translateX(0);
+}
+
+.cta:active svg {
+    transform: scale(0.9);
+    color: #f8f7f0;
+}
+
+.hover-underline-animation {
+    position: relative;
+    color: #f8f7f0;
+    padding-bottom: 5px;
+}
+
+.hover-underline-animation:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f8f7f0;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+
+}
+
+.cta:hover .hover-underline-animation:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    color: #f8f7f0;
+}
+
+.welcome {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 15%;
+    margin-left: 60rem;
+
+    .welcome-title {
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+        color: #f9f5ec;
+        font-size: 15px;
+        font-weight: 700;
+        width: auto;
+        letter-spacing: 2px;
+
+    }
+
+    .welcome-icon {
+        margin-top: 0.8rem;
+    }
+}
+
+.pro-icon {
+    position: absolute;
+    margin-left: 7.5rem;
+
+}
+
+// .pro-icon:hover {
+//     box-shadow: 4px 4px 4px 4px #f6e073;
+// }

@@ -11,7 +11,8 @@ const MenuSchema = mongoose.Schema({
     imgBreakfast: String,
     imgDinner: String,
     imgLunch: String,
-    imgSnack: String
+    imgSnack: String,
+    tabs: String
 })
 
 const MenuModel = mongoose.model('menus', MenuSchema)

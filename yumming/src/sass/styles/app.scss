@@ -8,28 +8,25 @@
 
 body {
     box-sizing: border-box;
-    background-color: rgb(255, 255, 255);
+    background-color: #f8f7f0;
     margin: 0 auto;
     width: 100%;
+
 }
 
 #app {
     position: relative;
     width: 100%;
     float: left;
+
 }
 
 .bienvenido {
     right: 0;
     position: absolute;
-    padding: 3rem 5rem 3rem 3rem;
+    padding: 0rem 5rem 3rem 3rem;
+    padding-top: 5rem;
 
-
-    h3 {
-        font-family: 'Cormorant Garamond';
-        font-size: 25px;
-        padding-bottom: 1rem;
-    }
 
     .pro {
         display: flex;
@@ -64,6 +61,11 @@ body {
     height: 4px;
     border-bottom: 0;
 
+}
+
+.loveHide {
+    display: none;
+    visibility: hidden;
 }
 
 .round {
@@ -158,55 +160,23 @@ input:checked+.love-heart .bottom {
 }
 
 
-//LOGOUT
-
-.cta {
+.atras {
+    min-width: 120px;
+    background: #000;
+    color: #EEEEEE;
+    height: 40px;
+    margin: 10px;
     border: none;
-    background: none;
-    padding-top: 2rem;
+    border-radius: 0 !important;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease-in-out;
 }
 
-.cta span {
-    padding-bottom: 7px;
-    letter-spacing: 4px;
-    font-size: 14px;
-    padding-right: 15px;
-    text-transform: uppercase;
-}
-
-.cta svg {
-    transform: translateX(-8px);
-    transition: all 0.3s ease;
-}
-
-.cta:hover svg {
-    transform: translateX(0);
-}
-
-.cta:active svg {
-    transform: scale(0.9);
-}
-
-.hover-underline-animation {
-    position: relative;
-    color: black;
-    padding-bottom: 20px;
-}
-
-.hover-underline-animation:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #000000;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-.cta:hover .hover-underline-animation:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+.atras:hover {
+    box-shadow: #EEEEEE 0px 0px 0px 11px, #161616 0px 0px 0px 10px;
+    background: #000;
+    color: #EEEEEE;
 }

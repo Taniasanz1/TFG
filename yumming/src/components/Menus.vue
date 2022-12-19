@@ -1,37 +1,51 @@
 <template>
+    <div class="menus-header">
+        <h2>¡Que aproveche!</h2>
+        <img src="../../public/assets/font-menus-header.jpg" alt="" height="230" width="1100">
+    </div>
     <div class="main-menus">
         <div v-if="loading">Loading...</div>
-        <div v-else v-for="menu of menus" :key="menu.id">
-            <div class="day">
-                <h3>{{ menu.day }}</h3>
-                <div class="meals">
-                    <div class="meal-item">
-                        <h4>Desayuno</h4>
-                        <div class="img-container">
-                            <img class="img-item" :src="menu.imgBreakfast" alt="" width="100" height="150" />
+        <div v-else id="tabs" class="drop-down-menus">
+            <div v-for="menu of menus" :key="menu.id">
+                <div class="tabs">
+                    <a v-on:click="activetab = `${menu.tab}`"
+                        v-bind:class="[activetab === `${menu.tab}` ? 'active' : '']">
+                        <h3>{{
+                                menu.day
+                        }}</h3>
+                    </a>
+                </div>
+                <div v-if="activetab === `${menu.tab}`" class="day tabcontent">
+                    <!-- <h3>{{ menu.day }}</h3> -->
+                    <div class="meals">
+                        <div class="meal-item">
+                            <h4>Desayuno</h4>
+                            <div class="img-container">
+                                <img class="img-item" :src="menu.imgBreakfast" alt="" width="100" height="150" />
+                            </div>
+                            <p>{{ menu.breakfast }}</p>
                         </div>
-                        <p>{{ menu.breakfast }}</p>
-                    </div>
-                    <div class="meal-item">
-                        <h4>Comida</h4>
-                        <div class="img-container">
-                            <img class="img-item" :src="menu.imgLunch" alt="" width="100" height="150" />
+                        <div class="meal-item">
+                            <h4>Comida</h4>
+                            <div class="img-container">
+                                <img class="img-item" :src="menu.imgLunch" alt="" width="100" height="150" />
+                            </div>
+                            <p>{{ menu.lunch }}</p>
                         </div>
-                        <p>{{ menu.lunch }}</p>
-                    </div>
-                    <div class="meal-item">
-                        <h4>Merienda</h4>
-                        <div class="img-container">
-                            <img class="img-item" :src="menu.imgSnack" alt="" width="100" height="150" />
+                        <div class="meal-item">
+                            <h4>Merienda</h4>
+                            <div class="img-container">
+                                <img class="img-item" :src="menu.imgSnack" alt="" width="100" height="150" />
+                            </div>
+                            <p>{{ menu.snack }}</p>
                         </div>
-                        <p>{{ menu.snack }}</p>
-                    </div>
-                    <div class="meal-item">
-                        <h4>Cena</h4>
-                        <div class="img-container">
-                            <img class="img-item" :src="menu.imgDinner" alt="" width="100" height="150" />
+                        <div class="meal-item">
+                            <h4>Cena</h4>
+                            <div class="img-container">
+                                <img class="img-item" :src="menu.imgDinner" alt="" width="100" height="150" />
+                            </div>
+                            <p>{{ menu.dinner }}</p>
                         </div>
-                        <p>{{ menu.dinner }}</p>
                     </div>
                 </div>
             </div>
@@ -43,10 +57,12 @@
 export default {
     data() {
         return {
+            el: '#tabs',
             name: 'Menus',
             menus: [],
             loading: true,
 
+            activetab: "1",
         }
     },
     created() {
@@ -60,7 +76,8 @@ export default {
             }).then(res => res.json());
             this.menus = response.menus;
             this.loading = false;
-        }
+        },
+
     }
 }
 </script>

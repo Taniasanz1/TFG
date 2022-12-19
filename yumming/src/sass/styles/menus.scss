@@ -1,21 +1,43 @@
 .main-menus {
     width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    max-width: 100%;
-    height: 70rem;
-    // padding-top: 20rem;
+    margin-top: 10rem;
 
+    .drop-down-menus {
+        width: 80%;
+        display: flex;
+        //justify-content: space-around;
+        margin-left: 10rem;
+        max-width: 100%;
+        height: 25rem;
+    }
 
     .day {
         display: flex;
         flex-direction: column;
-        width: 15rem;
+        //width: 15rem;
+        position: absolute;
+        padding: 30px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 3px 3px 6px #e1e1e1;
+        width: 80%;
+        height: 22rem;
+        background-color: #b8adad94;
+
+        h3 {
+            font-family: 'Maven Pro';
+            font-size: 22px;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            font-weight: 700;
+            width: 50px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
 
         .meals {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 1rem;
 
 
@@ -23,12 +45,19 @@
                 border: 1px solid black;
                 border-color: rgba(128, 128, 128, 0.582);
                 padding: 1rem;
+                margin: 0 0.5rem 0 0.5rem;
                 box-shadow: -1px 0px 4px gray;
+                border-radius: 10px;
+
+                h4 {
+                    text-align: center;
+                    font-family: 'Maven Pro';
+                }
 
                 .img-container {
 
-                    width: 12rem;
-                    height: 5rem;
+                    width: 10rem;
+                    height: 8rem;
                     overflow: hidden;
                     margin: 10px;
                     position: relative;
@@ -49,3 +78,96 @@
         }
     }
 }
+
+
+.menus-header {
+    height: 10rem;
+    width: 60%;
+    margin-left: 9rem;
+
+    //background-image: url("../../public/assets/header-food-img.png");
+    h2 {
+        position: absolute;
+        margin-top: 10rem;
+        margin-left: 14rem;
+        z-index: 20;
+        font-family: 'Maven Pro';
+        font-size: 30px;
+        color: #18191b;
+    }
+
+    img {
+        position: absolute;
+        margin-top: 5rem;
+        border-radius: 30px;
+        opacity: 0.85;
+    }
+
+}
+
+.tabs {
+    overflow: hidden;
+    margin-left: 20px;
+    margin-bottom: -2px; // hide bottom border
+
+    a {
+        padding-top: 3rem;
+    }
+
+    h3 {
+        font-family: 'Maven Pro';
+        font-size: 15px;
+        font-weight: 700;
+        width: 100px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: auto;
+        padding: 0.5rem;
+    }
+
+
+}
+
+.tabs ul {
+    list-style-type: none;
+    margin-left: 20px;
+}
+
+.tabs a {
+    float: left;
+    cursor: pointer;
+    padding: 12px 24px;
+    transition: background-color 0.2s;
+    border: 1px solid #ccc;
+    border-right: none;
+    background-color: #f1f1f1;
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+}
+
+.tabs a:last-child {
+    border-right: 1px solid #ccc;
+}
+
+/* Change background color of tabs on hover */
+.tabs a:hover {
+    background-color: #aaa;
+    color: #fff;
+}
+
+/* Styling for active tab */
+.tabs a.active {
+    background-color: #fff;
+    color: #484848;
+    border-bottom: 2px solid #fff;
+    cursor: default;
+}
+
+// .tabcontent {
+//     padding: 30px;
+//     border: 1px solid #ccc;
+//     border-radius: 10px;
+//     box-shadow: 3px 3px 6px #e1e1e1;
+//     width: 80%;
+//     height: 25rem;
+// }

@@ -17,3 +17,14 @@ export const payment = reactive({
     properties: { isPayment: false }
 
 })
+
+
+export const creditCard = reactive({
+    properties: { isCredit: false }
+
+})
+
+export const heartInvisible = reactive({
+    properties: { isInvisible: false }
+
+})

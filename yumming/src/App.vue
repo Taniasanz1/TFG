@@ -3,9 +3,7 @@
     <div v-if="this.isLogged.status">
       <Header />
       <div class="bienvenido">
-        <h3>¡Bienvenido/a {{ this.user.properties.name }}!</h3>
-        <div class="pro">
-          <p>¿Te apuntas a nuestros entrenamientos?</p>
+        <div v-if="!this.payment.isPayment || this.heartInvisible.isInvisible === false" class="pro">
           <div class="love">
             <input id="switch" type="checkbox" @click="updateToPro()">
             <label class="love-heart" for="switch">
@@ -17,13 +15,12 @@
             </label>
           </div>
         </div>
-        <button class="cta" @click="logOut()">
-          <span class="hover-underline-animation"> Salir</span>
-          <svg viewBox="0 0 46 16" height="10" width="30" xmlns="http://www.w3.org/2000/svg" id="arrow-horizontal">
-            <path transform="translate(30)" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-              data-name="Path 10" id="Path_10"></path>
-          </svg>
-        </button>
+        <div v-else-if="this.payment.isPayment || this.creditCard.isCredit">
+          <button class="atras" @click="back()">
+            Atrás
+          </button>
+        </div>
+        <div v-else-if="this.heartInvisible.isInvisible == true"></div>
         <!-- <button @click="logOut()">LogOut</button> -->
 
       </div>
@@ -41,7 +38,7 @@
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Login from './components/Login.vue'
-import { isLogged, user, payment } from './globalStates'
+import { isLogged, user, payment, creditCard, heartInvisible } from './globalStates'
 
 
 export default {
@@ -56,6 +53,8 @@ export default {
       isLogged,
       user,
       payment,
+      creditCard,
+      heartInvisible
     }
   },
   // created() {
@@ -87,6 +86,11 @@ export default {
     },
     logOut() {
       this.isLogged.status = false;
+    },
+
+    back() {
+      this.payment.isPayment = false;
+      this.creditCard.isCredit = false;
     }
   }
 }
