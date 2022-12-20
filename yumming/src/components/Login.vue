@@ -1,39 +1,4 @@
 <template>
-
-    <!-- <body> -->
-    <!-- <div class="form">
-            <div v-if="!registerActive" class="login" v-bind:class="{ error: emptyFields }">
-                <input type="button" value="Register" class="btn-select"
-                    @click="registerActive = !registerActive, emptyFields = false">
-
-                <h3 class="form-title">Entra aquí:</h3>
-                <label for="email">Email:</label>
-                <input v-model="emailLogin" type="email" @change="setUserProperty($event)"><br />
-                <label for="pass">Contraseña:</label>
-                <input v-model="passwordLogin" type="password" @change="setUserProperty($event)" />
-                <button @click="login()">Entrar</button>
-                <p>Don't have an account? <a href="#"
-                        @click="registerActive = !registerActive, emptyFields = false">Sign up here</a></p>
-            </div>
-            <div class="register">
-                <h3 class="form-title">¡Regístrate!</h3>
-                <label for="name">Nombre y apellidos:</label>
-                <input type="text" name="name" id="name" @change="setUserProperty($event)" /><br />
-                <label for="email">Email:</label>
-                <input v-model="emailLogin" type="email" @change="setUserProperty($event)"><br />
-                <label for="pass">Contraseña:</label>
-                <input v-model="passwordLogin" type="password" @change="setUserProperty($event)" />
-                <h3>¿Qué buscas?</h3>
-                <label for="level-perder">Perder Peso</label>
-                <input type="radio" name="level" value="0" @change="setUserProperty($event)" />
-                <label for="level-ganar">Ganar músculo</label>
-                <input type="radio" name="level" value="1" @change="setUserProperty($event)" />
-                <button @click="register()">Registrarse</button>
-            </div>
-        </div>
-    </body> -->
-
-
     <div class="login-page">
         <transition name="fade">
             <div v-if="!registerActive" class="wallpaper-login"></div>

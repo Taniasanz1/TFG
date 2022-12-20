@@ -43,6 +43,7 @@ app.get('/', function (req, res) {
 
 app.use(require('./routes/menus'));
 app.use(require('./routes/users'));
+app.use(require('./routes/sports'));
 
 
 app.listen(8081, () => {

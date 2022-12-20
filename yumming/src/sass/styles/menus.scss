@@ -1,6 +1,54 @@
+.menus-header {
+    height: 10rem;
+    width: 60%;
+    margin-left: 9rem;
+    //background-image: linear-gradient(90deg, transparent 5%, rgba(255, 255, 255, .6) 10%, rgba(255, 255, 255, .6) 90%, transparent 95%);
+
+    //background-image: url("../../public/assets/header-food-img.png");
+
+
+    .layer-transparent {
+        height: 15rem;
+        top: 5rem;
+        left: 2rem;
+        position: absolute;
+        z-index: 100;
+        width: 60%;
+        background-image: linear-gradient(90deg, transparent 5%, rgba(255, 255, 255, .6) 10%, rgba(255, 255, 255, .6) 90%, transparent 95%);
+    }
+
+    h2 {
+        position: absolute;
+        margin-top: 5rem;
+        margin-left: 12rem;
+        z-index: 20;
+        font-family: 'Maven Pro';
+        font-size: 30px;
+        color: #18191b;
+    }
+
+    img {
+        position: absolute;
+        margin-top: 5rem;
+        border-radius: 30px;
+        opacity: 0.85;
+
+    }
+
+    p {
+        font-family: 'Maven Pro';
+        font-size: 15px;
+        color: #18191b;
+        position: absolute;
+        margin-top: 8rem;
+        margin-left: 12rem;
+    }
+
+}
+
 .main-menus {
     width: 100%;
-    margin-top: 10rem;
+    margin-top: 12rem;
 
     .drop-down-menus {
         width: 80%;
@@ -79,31 +127,6 @@
     }
 }
 
-
-.menus-header {
-    height: 10rem;
-    width: 60%;
-    margin-left: 9rem;
-
-    //background-image: url("../../public/assets/header-food-img.png");
-    h2 {
-        position: absolute;
-        margin-top: 10rem;
-        margin-left: 14rem;
-        z-index: 20;
-        font-family: 'Maven Pro';
-        font-size: 30px;
-        color: #18191b;
-    }
-
-    img {
-        position: absolute;
-        margin-top: 5rem;
-        border-radius: 30px;
-        opacity: 0.85;
-    }
-
-}
 
 .tabs {
     overflow: hidden;

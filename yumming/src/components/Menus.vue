@@ -1,6 +1,10 @@
 <template>
     <div class="menus-header">
-        <h2>¡Que aproveche!</h2>
+        <div class="layer-transparent">
+            <h2>¡Que aproveche, {{ this.user.properties.name }}!</h2>
+            <p>Empieza a sentirte bien con este menú personalizado a tus gustos y objetivos.</p>
+        </div>
+
         <img src="../../public/assets/font-menus-header.jpg" alt="" height="230" width="1100">
     </div>
     <div class="main-menus">
@@ -53,6 +57,7 @@
     </div>
 </template>
 <script>
+import { user } from "../globalStates"
 
 export default {
     data() {
@@ -61,7 +66,7 @@ export default {
             name: 'Menus',
             menus: [],
             loading: true,
-
+            user,
             activetab: "1",
         }
     },

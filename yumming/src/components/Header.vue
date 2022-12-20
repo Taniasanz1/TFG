@@ -40,14 +40,20 @@
 
 </template>
 <script>
-import { user } from '../globalStates'
+import { user, isLogged } from '../globalStates'
 
 export default {
     data() {
         return {
             name: 'Header',
-            user
+            user,
+            isLogged
         }
+    },
+    methods: {
+        logOut() {
+            this.isLogged.status = false;
+        },
     }
 }
 </script>
