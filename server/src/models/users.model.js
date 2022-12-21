@@ -8,8 +8,8 @@ const UsersSchema = new Schema({
     email: String,
     pass: String,
     level: Number,
-    isPro: Boolean
-
+    isPro: Boolean,
+    idSport: Array,
 });
 
 const UsersModel = mongoose.model('usuarios', UsersSchema)

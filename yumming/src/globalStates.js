@@ -8,7 +8,7 @@ export const isLogged = reactive({
 })
 
 export const user = reactive({
-    properties: { name: null, email: null, pass: null, level: null, isPro: false }
+    properties: { name: null, email: null, pass: null, level: null, isPro: false, idSport: 0 }
 
 })
 

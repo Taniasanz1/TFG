@@ -1,97 +1,98 @@
 .sport-tables {
-    margin: 5rem auto;
+    margin: 3rem auto;
     display: flex;
-    //align-items: center;
-    //justify-content: center;
-    width: 95%;
+    width: 90%;
     flex-direction: column;
-    max-width: 95%;
-    height: 30rem;
+    max-width: 90%;
+    height: 40rem;
 
     .sports1 {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        gap: 1.5rem;
+        //gap: 1.5rem;
 
         h4 {
             font-family: 'Maven Pro';
             letter-spacing: 2px;
         }
 
-    }
-
-    .card_box {
-        height: 12rem;
-        border-radius: 20px;
-        background: linear-gradient(170deg, rgba(235, 225, 225, 0.651) 0%, rgb(223, 207, 207) 100%);
-        position: relative;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
-        cursor: pointer;
-        transition: all .3s;
-        margin-bottom: 2rem;
-        cursor: pointer;
-        //width: 30rem;
 
 
-        .sport {
-            background-color: rgb(204, 206, 206);
-            height: 12rem;
-            //border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 5px 5px 5px rgb(85, 80, 80);
+        .card_box {
+            width: 190px;
+            height: 254px;
+            padding: .8em;
+            background: #f5f5f5;
+            position: relative;
+            overflow: visible;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            margin: 2rem;
+
         }
-    }
 
+        .card_box-img {
+            background-color: #ffcaa6;
+            height: 40%;
+            width: 100%;
+            border-radius: .5rem;
+            transition: .3s ease;
+        }
 
-    .card_box:hover {
-        transform: scale(0.9);
-    }
+        .card_box-info {
+            padding-top: 10%;
+        }
 
-    .card_box span {
-        position: absolute;
-        overflow: hidden;
-        width: 150px;
-        height: 150px;
-        top: -10px;
-        left: -10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        svg {
+            width: 20px;
+            height: 20px;
+        }
 
-    .card_box span::before {
-        content: 'Premium';
-        position: absolute;
-        font-family: 'Maven Pro';
-        width: 150%;
-        height: 40px;
+        .card_box-footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
 
-        background: linear-gradient(90deg, var(--c1, #f6d365), var(--c2, #fda085) 51%, var(--c1, #f6d365)) var(--x, 0)/ 200%;
-        //background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(33, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
-        //background-image: linear-gradient(45deg, #ff6547 0%, #ffb144 51%, #ff7053 100%);
-        transform: rotate(-45deg) translateY(-20px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23);
-    }
+        /*Text*/
+        .text_box-title {
+            font-weight: 900;
+            font-size: 1.2em;
+            line-height: 1.5;
+            font-family: 'Maven Pro';
+            color: #242727;
+        }
 
-    .card_box span::after {
-        content: '';
-        position: absolute;
-        width: 10px;
-        bottom: 0;
-        left: 0;
-        height: 10px;
-        z-index: -1;
-        box-shadow: 140px -140px #cc3f47;
-        background-image: linear-gradient(45deg, #FF512F 0%, #F09819 51%, #FF512F 100%);
+        .text_box-body {
+            font-size: .9em;
+            padding-bottom: 10px;
+        }
+
+        /*Button*/
+        .card_box-button {
+            border: 1px solid #252525;
+            display: flex;
+            padding: .3em;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: .3s ease-in-out;
+        }
+
+        /*Hover*/
+        .card_box-img:hover {
+            transform: translateY(-25%);
+            box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+        }
+
+        .card_box-button:hover {
+            border: 1px solid #ffcaa6;
+            background-color: #ffcaa6;
+        }
+
     }
 
 }
@@ -134,25 +135,29 @@
 }
 
 .pricecontainer {
-    width: 100%;
+    //width: 100%;
     margin-top: 0.7em;
-    background-color: rgb(30, 30, 30);
+    //background-color: rgb(30, 30, 30);
     box-shadow: inset 0px 0px 2em rgba(0, 0, 0, 0.3);
+
 }
 
 .price {
     text-align: center;
-    color: rgb(180, 180, 180);
-    font-size: 32px;
+    color: rgb(88, 85, 85);
+    font-size: 20px;
     font-weight: bold;
     padding: 0.75em 0 0 0;
+    font-family: 'Maven Pro';
 }
 
 .pricedescriptor {
     text-align: center;
-    color: rgb(118, 118, 118);
-    font-size: 25px;
-    padding: 1rem 0 1em 0;
+    color: rgb(63, 60, 60);
+    font-size: 20px;
+    padding: 0.5rem 0 0.5em 0;
+    font-weight: bold;
+    font-family: 'Maven Pro';
 }
 
 .includes {
