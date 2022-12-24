@@ -31,7 +31,6 @@ router.put('/users/:email', async (req, res) => {
     const email = req.params.email;
     const userDB = await Users.findOneAndUpdate({ email }, { idSport: req.body.idSport });
     const response = userDB == null ? { user: null } : { user: userDB };
-    console.log(response);
     res.send(response);
 })
 

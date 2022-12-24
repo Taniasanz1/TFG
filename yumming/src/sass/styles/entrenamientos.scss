@@ -33,15 +33,30 @@
         }
 
         .card_box-img {
-            background-color: #ffcaa6;
+            //background-color: #ffcaa6;
             height: 40%;
             width: 100%;
             border-radius: .5rem;
             transition: .3s ease;
+
+            img {
+                position: relative;
+                width: 10rem;
+                height: fit-content;
+            }
         }
 
         .card_box-info {
             padding-top: 10%;
+
+
+        }
+
+        .card_box-check {
+            img {
+                width: 2rem;
+                height: 2rem;
+            }
         }
 
         svg {
