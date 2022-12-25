@@ -6,7 +6,7 @@
         <div v-for="sport of sports" :key="sport.id">
           <div v-bind:class="[`${sport.idSport}` >= 1 && `${sport.idSport}` < 4 ? 'card_box' : 'invisible-box']">
             <div v-if="this.payment.isPayment && this.idSport == sport.idSport"></div>
-            <div v-else class=" card_box-img">
+            <div v-else class="card_box-img">
               <img :src="sport.img" alt="">
             </div>
             <div v-if="this.payment.isPayment && this.idSport == sport.idSport" class="card_pay-info">
@@ -49,6 +49,7 @@
             </div>
             <div class="card_box-check" v-else>
               <img src="../../public/assets/marca-de-verificacion.png" alt="">
+              <p @click="eachTable()">Accede al entrenamiento</p>
             </div>
           </div>
         </div>
@@ -56,8 +57,8 @@
       <div class="sports1">
         <div v-for="sport of sports" :key="sport.id">
           <div v-bind:class="[`${sport.idSport}` >= 4 && `${sport.idSport}` <= 6 ? 'card_box' : 'invisible-box']">
-            <div v-if="!this.payment.isPayment || !this.idSports.find(id => id === sport.idSport)"
-              class=" card_box-img">
+            <div v-if="this.payment.isPayment && this.idSport == sport.idSport"></div>
+            <div v-else class="card_box-img">
               <img :src="sport.img" alt="" height="40%" width="100%" />
             </div>
             <div v-if="this.payment.isPayment && this.idSport == sport.idSport" class="card_pay-info">
@@ -80,7 +81,8 @@
               <p class="text_box-title">{{ sport.name }}</p>
               <p class="text_box-body">Product description and details</p>
             </div>
-            <div v-if="!this.idSports.find(id => id === sport.idSport)" class="card_box-footer">
+            <div v-if="this.payment.isPayment && this.idSport == sport.idSport"></div>
+            <div v-else-if="!this.idSports.find(id => id === sport.idSport)" class="card_box-footer">
               <span class="text_box-title">{{ sport.price }}</span>
               <div class="card_box-button" @click="pay(sport.idSport)">
                 <svg class="svg-icon" viewBox="0 0 20 20">
@@ -96,40 +98,34 @@
                 </svg>
               </div>
             </div>
+            <div class="card_box-check" v-else>
+              <img src="../../public/assets/marca-de-verificacion.png" alt="">
+              <p @click="eachTable()">Accede al entrenamiento</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- <div v-if="this.payment.isPayment" class="opacity-font"></div> -->
-    <!-- <button v-if="this.payment.isPayment" class="btn-payment" @click="closeCreditModal()">
-      Atrás
-    </button> -->
-    <!-- <div v-if="this.payment.isPayment" class="payment"> -->
+    <!-- MODAL DE ENTRENAMIENTO -->
 
-    <!-- <p class=" title">Plan Premium</p>
-    <div class="pricecontainer">
-      <p class="price">29.99€</p>
-      <p class="pricedescriptor">/mes</p>
+    <div v-if="this.tableSport" class="table_box">
+      <div v-for="sport of sports" :key="sport.id" class="card_table">
+        <div v-if="sport.idSport == this.idSport" class="card_eachSPort">
+          <img v-if="sport.idSport == this.idSport" :src="sport.imgTable" alt="">
+          <div class="buttons_table">
+            <button @click="closeTable()" class="close_button">Cerrar</button>
+            <a :href="sport.pdfTable" :download="sport.name">Descargar tabla</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="includes">Este Plan incluye:</p>
-    <ul class="benefitlist">
-      <li>Todas las tablas de ejercicios</li>
-      <li>Consejos de profesionales</li>
-      <li>Técnica de la postura</li>
-      <li>Técnica de la postura</li>
-    </ul>
-    <div class="btncontainer">
-      <button @click="creditModal()">Hazte Pro</button>
-    </div>
-  </div> -->
+
+
+
+    <!-- MODAL DE TARJETA DE PAGO -->
     <div v-if="this.creditCard.isCredit" class="form-payment">
       <div class="pay work">
         <div class="img-section">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" height="77" width="76">
-            <path fill-rule="nonzero" fill="#3F9CBB"
-              d="m60.91 71.846 12.314-19.892c3.317-5.36 3.78-13.818-2.31-19.908l-26.36-26.36c-4.457-4.457-12.586-6.843-19.908-2.31L4.753 15.69c-5.4 3.343-6.275 10.854-1.779 15.35a7.773 7.773 0 0 0 7.346 2.035l7.783-1.945a3.947 3.947 0 0 1 3.731 1.033l22.602 22.602c.97.97 1.367 2.4 1.033 3.732l-1.945 7.782a7.775 7.775 0 0 0 2.037 7.349c4.49 4.49 12.003 3.624 15.349-1.782Zm-24.227-46.12-1.891-1.892-1.892 1.892a2.342 2.342 0 0 1-3.312-3.312l1.892-1.892-1.892-1.891a2.342 2.342 0 0 1 3.312-3.312l1.892 1.891 1.891-1.891a2.342 2.342 0 0 1 3.312 3.312l-1.891 1.891 1.891 1.892a2.342 2.342 0 0 1-3.312 3.312Zm14.19 14.19a2.343 2.343 0 1 1 3.315-3.312 2.343 2.343 0 0 1-3.314 3.312Zm0 7.096a2.343 2.343 0 0 1 3.313-3.312 2.343 2.343 0 0 1-3.312 3.312Zm7.096-7.095a2.343 2.343 0 1 1 3.312 0 2.343 2.343 0 0 1-3.312 0Zm0 7.095a2.343 2.343 0 0 1 3.312-3.312 2.343 2.343 0 0 1-3.312 3.312Z">
-            </path>
-          </svg> -->
         </div>
         <div class="pay-desc">
           <div class="pay-header">
@@ -160,8 +156,6 @@
       </div>
     </div>
   </div>
-
-
 </template>
 <script>
 import { payment, creditCard, user } from '../globalStates';
@@ -176,7 +170,8 @@ export default {
       creditCard,
       idSport: "0",
       idSports: [],
-      user
+      user,
+      tableSport: false,
     }
   },
   created() {
@@ -218,17 +213,21 @@ export default {
         .then(res => res.json())
         .then(data => {
           this.user.properties.idSport = data.user.idSport;
-          console.log(this.user.properties);
         });
       this.payment.isPayment = false;
       this.creditCard.isCredit = false;
       this.loading = false;
       this.idSports.push(this.idSport);
+
+      localStorage.setItem("sport", JSON.stringify(this.idSport));
     },
 
-    // findSports(paramId) {
-    //   const isIdHere = this.idSports.find(id => id === paramId)
-    // }
+    eachTable() {
+      this.tableSport = true;
+    },
+    closeTable() {
+      this.tableSport = false;
+    }
 
   }
 }

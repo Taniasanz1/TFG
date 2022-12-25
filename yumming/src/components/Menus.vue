@@ -20,7 +20,6 @@
                     </a>
                 </div>
                 <div v-if="activetab === `${menu.tab}`" class="day tabcontent">
-                    <!-- <h3>{{ menu.day }}</h3> -->
                     <div class="meals">
                         <div class="meal-item">
                             <h4>Desayuno</h4>
