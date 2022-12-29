@@ -123,6 +123,7 @@
 
 
     <!-- MODAL DE TARJETA DE PAGO -->
+    <div v-if="this.creditCard.isCredit" class="font-payment"></div>
     <div v-if="this.creditCard.isCredit" class="form-payment">
       <div class="pay work">
         <div class="img-section">

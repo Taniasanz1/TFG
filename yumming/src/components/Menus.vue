@@ -3,10 +3,46 @@
         <div class="layer-transparent">
             <h2>¡Que aproveche, {{ this.user.properties.name }}!</h2>
             <p>Empieza a sentirte bien con este menú personalizado a tus gustos y objetivos.</p>
-        </div>
 
+            <div class="calories_counter">
+                <div class="calories_counter1">
+                    <div class="each">
+                        <h4>{{ this.counter }}</h4>
+                        <p>Consumidas</p>
+                    </div>
+                    <div class="each circle">
+                        <h4>{{ this.restantes }}</h4>
+                        <p>{{ this.mssg }}</p>
+                        <p>Restantes</p>
+                    </div>
+                    <div class="each">
+                        <h4>0</h4>
+                        <p>Quemadas</p>
+                    </div>
+                </div>
+                <div class="calories_counter2">
+                    <div class="each1">
+                        <p>Carbohidratos</p>
+                        <p>----------</p>
+                        <h4>{{ this.carbs }}/125g</h4>
+                    </div>
+                    <div class="each1">
+                        <p>Proteínas</p>
+                        <p>----------</p>
+                        <h4>{{ this.protes }}/61g</h4>
+                    </div>
+                    <div class="each1">
+                        <p>Grasas</p>
+                        <p>----------</p>
+                        <h4>{{ this.fats }}/40g</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
         <img src="../../public/assets/font-menus-header.jpg" alt="" height="230" width="1100">
     </div>
+
+
     <div class="main-menus">
         <div v-if="loading">Loading...</div>
         <div v-else id="tabs" class="drop-down-menus">
@@ -14,40 +50,73 @@
                 <div class="tabs">
                     <a v-on:click="activetab = `${menu.tab}`"
                         v-bind:class="[activetab === `${menu.tab}` ? 'active' : '']">
-                        <h3>{{
-                                menu.day
-                        }}</h3>
+                        <h3>{{ menu.day }}</h3>
                     </a>
                 </div>
-                <div v-if="activetab === `${menu.tab}`" class="day tabcontent">
-                    <div class="meals">
-                        <div class="meal-item">
-                            <h4>Desayuno</h4>
-                            <div class="img-container">
-                                <img class="img-item" :src="menu.imgBreakfast" alt="" width="100" height="150" />
+                <div v-if="activetab === `${menu.tab}`" class="day tabcontent"
+                    v-bind:class="[activetab === '2' ? 'second' : activetab === '3' ? 'third' : '']">
+                    <div>
+                        <div class="meals">
+                            <div class="meal-item">
+                                <h4>Desayuno</h4>
+                                <div class="img-container">
+                                    <img class="img-item" :src="menu.imgBreakfast" alt="" width="100" height="150" />
+                                </div>
+                                <p>{{ menu.breakfast }}</p>
+                                <div class="meal-kcal">
+                                    <p>{{ menu.kcalBreakfast }} kcal</p>
+                                    <label class="check-kcal">
+                                        <input type="checkbox"
+                                            @click="countingKcals(menu.kcalLunch, menu.carbsLunch, menu.protesLunch, menu.fatsLunch)">
+                                        <div class="checkmark"></div>
+                                    </label>
+                                </div>
                             </div>
-                            <p>{{ menu.breakfast }}</p>
-                        </div>
-                        <div class="meal-item">
-                            <h4>Comida</h4>
-                            <div class="img-container">
-                                <img class="img-item" :src="menu.imgLunch" alt="" width="100" height="150" />
+                            <div class="meal-item">
+                                <h4>Comida</h4>
+                                <div class="img-container">
+                                    <img class="img-item" :src="menu.imgLunch" alt="" />
+                                </div>
+                                <p>{{ menu.lunch }}</p>
+                                <div class="meal-kcal">
+                                    <p>{{ menu.kcalLunch }} kcal</p>
+                                    <label class="check-kcal">
+                                        <input type="checkbox"
+                                            @click="countingKcals(menu.kcalLunch, menu.carbsLunch, menu.protesLunch, menu.fatsLunch)">
+                                        <div class="checkmark"></div>
+                                    </label>
+                                </div>
                             </div>
-                            <p>{{ menu.lunch }}</p>
-                        </div>
-                        <div class="meal-item">
-                            <h4>Merienda</h4>
-                            <div class="img-container">
-                                <img class="img-item" :src="menu.imgSnack" alt="" width="100" height="150" />
+                            <div class="meal-item">
+                                <h4>Merienda</h4>
+                                <div class="img-container">
+                                    <img class="img-item" :src="menu.imgSnack" alt="" width="100" height="150" />
+                                </div>
+                                <p>{{ menu.snack }}</p>
+                                <div class="meal-kcal">
+                                    <p>{{ menu.kcalSnack }} kcal</p>
+                                    <label class="check-kcal">
+                                        <input type="checkbox"
+                                            @click="countingKcals(menu.kcalSnack, menu.carbsSnack, menu.protesSnack, menu.fatsSnack)">
+                                        <div class="checkmark"></div>
+                                    </label>
+                                </div>
                             </div>
-                            <p>{{ menu.snack }}</p>
-                        </div>
-                        <div class="meal-item">
-                            <h4>Cena</h4>
-                            <div class="img-container">
-                                <img class="img-item" :src="menu.imgDinner" alt="" width="100" height="150" />
+                            <div class="meal-item">
+                                <h4>Cena</h4>
+                                <div class="img-container">
+                                    <img class="img-item" :src="menu.imgDinner" alt="" width="100" height="150" />
+                                </div>
+                                <p>{{ menu.dinner }}</p>
+                                <div class="meal-kcal">
+                                    <p>{{ menu.kcalDinner }} kcal</p>
+                                    <label class="check-kcal">
+                                        <input type="checkbox"
+                                            @click="countingKcals(menu.kcalDinner, menu.carbsDinner, menu.protesDinner, menu.fatsDinner)">
+                                        <div class="checkmark"></div>
+                                    </label>
+                                </div>
                             </div>
-                            <p>{{ menu.dinner }}</p>
                         </div>
                     </div>
                 </div>
@@ -58,6 +127,7 @@
 <script>
 import { user } from "../globalStates"
 
+
 export default {
     data() {
         return {
@@ -67,6 +137,12 @@ export default {
             loading: true,
             user,
             activetab: "1",
+            counter: 0,
+            carbs: 0,
+            protes: 0,
+            fats: 0,
+            restantes: 1252,
+            mssg: ""
         }
     },
     created() {
@@ -81,6 +157,18 @@ export default {
             this.menus = response.menus;
             this.loading = false;
         },
+        countingKcals(plus, carb, prote, fat) {
+            if (this.counter >= 1252) {
+                this.counter = 1252;
+                this.mssg = "¡Ya has completado el día de hoy";
+            } else {
+                this.counter += plus;
+                this.carbs += carb;
+                this.restantes -= plus;
+                this.protes += prote;
+                this.fats += fat;
+            }
+        }
 
     }
 }

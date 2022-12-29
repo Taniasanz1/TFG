@@ -11,12 +11,13 @@
                     <label for="email">
                         <p>Email:</p>
                     </label>
-                    <input name="email" id="email" type="email" @change="setUserProperty($event)" placeholder="Email">
+                    <input name="email" id="email" type="email" @change="setUserProperty($event)" placeholder="Email"
+                        pattern="+@.+" required>
                     <label for="pass">
                         <p>Contraseña:</p>
                     </label>
                     <input name="pass" id="pass" type="password" @change="setUserProperty($event)"
-                        placeholder="Password">
+                        placeholder="Password" required>
                     <button @click="login()">Entrar</button>
                     <p>¿No tienes una cuenta aún? <a href="#" @click="registerActive = !registerActive">Regístrate</a>
                     </p>
@@ -29,16 +30,18 @@
                     <label for="name">
                         <p>Nombre y apellidos:</p>
                     </label>
-                    <input name="name" id="name" type="text" @change="setUserProperty($event)" placeholder="Nombre" />
+                    <input name="name" id="name" type="text" @change="setUserProperty($event)" placeholder="Nombre"
+                        required />
                     <label for="email">
                         <p>Email:</p>
                     </label>
-                    <input name="email" id="email" type="email" @change="setUserProperty($event)" placeholder="Email">
+                    <input name="email" id="email" type="email" @change="setUserProperty($event)" placeholder="Email"
+                        pattern="+@.+" required>
                     <label for="pass">
                         <p>Contraseña:</p>
                     </label>
                     <input name="pass" id="pass" type="password" @change="setUserProperty($event)"
-                        placeholder="Password">
+                        placeholder="Password" required>
                     <h3>
                         <p>¿Qué buscas?</p>
                     </h3>
