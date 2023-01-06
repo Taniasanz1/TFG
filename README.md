@@ -1,4 +1,9 @@
-# yumming
+# Trabajo de Fin de Grado DAW
+## Y U M M I N G
+
+# Presentación 
+
+https://view.genial.ly/63b2d2db12e4fc0018c7f6ac/presentation-presentacion-proyecto-geometrico
 
 ## Project setup
 ```

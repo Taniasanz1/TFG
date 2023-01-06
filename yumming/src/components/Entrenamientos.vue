@@ -15,7 +15,6 @@
                 <p class="price">{{ sport.price }} /mes</p>
                 <p class="pricedescriptor"></p>
               </div>
-              <!-- <p class="includes">Este Plan incluye:</p> -->
               <ul class="benefitlist">
                 <li>{{ sport.difficulty }}</li>
                 <li>{{ sport.durability }}</li>
@@ -219,8 +218,6 @@ export default {
       this.creditCard.isCredit = false;
       this.loading = false;
       this.idSports.push(this.idSport);
-
-      localStorage.setItem("sport", JSON.stringify(this.idSport));
     },
 
     eachTable() {

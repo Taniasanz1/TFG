@@ -13,12 +13,9 @@
           <span class="bottom-key-1"></span>
           <span class="bottom-key-2"></span>
         </a>
-        <!-- <button class="button_home_1">Empieza ya</button>
-        <button class="button_home_2">Aprender más</button> -->
       </div>
     </div>
     <div class="front-image-1">
-      <!-- <img src="../../public/assets/front-breakfast1.png" width="3000" height="600" /> -->
     </div>
 
   </div>

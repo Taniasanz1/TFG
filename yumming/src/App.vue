@@ -3,14 +3,6 @@
     <div v-if="this.isLogged.status">
       <Header />
       <div class="bienvenido">
-
-        <!-- <div v-if="this.payment.isPayment || this.creditCard.isCredit">
-          <button class="atras" @click="back()">
-            Atrás
-          </button>
-        </div>
-        <div v-else-if="this.heartInvisible.isInvisible == true"></div> -->
-
       </div>
       <router-view>
       </router-view>
@@ -26,7 +18,7 @@
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Login from './components/Login.vue'
-import { isLogged, user, payment, creditCard, heartInvisible } from './globalStates'
+import { isLogged } from './globalStates'
 
 
 export default {
@@ -39,36 +31,6 @@ export default {
         Login
       },
       isLogged,
-      user,
-      payment,
-      creditCard,
-      heartInvisible
-    }
-  },
-
-  methods: {
-
-    async updateToPro() {
-      this.payment.isPayment = true;
-      this.$router.push("/entrenamientos")
-      // const requestOptions = {
-      //   method: "PUT",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: ''
-      // };
-
-      // const response = await fetch('http://localhost:8081/users/' + this.user.properties.email, requestOptions)
-      //   .then(res => res.json());
-      // this.user.properties = response.user;
-      // if (this.user.properties.isPro) {
-      //   this.$router.push("/entrenamientos")
-
-      // }
-    },
-
-    back() {
-      this.payment.isPayment = false;
-      this.creditCard.isCredit = false;
     }
   }
 }
