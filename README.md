@@ -3,7 +3,7 @@
 
 # Presentación 
 
-https://view.genial.ly/63b2d2db12e4fc0018c7f6ac/presentation-presentacion-proyecto-geometrico
+https://view.genial.ly/63b2d2db12e4fc0018c7f6ac/presentation-tfg-yumming-tania-sanz-de-juan
 
 ## Project setup
 ```
