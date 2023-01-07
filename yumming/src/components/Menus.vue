@@ -3,7 +3,18 @@
         <div class="layer-transparent">
             <h2>¡Que aproveche, {{ this.user.properties.name }}!</h2>
             <p>Empieza a sentirte bien con este menú personalizado a tus gustos y objetivos.</p>
-
+            <div class="actual-date" v-for="dia of dias" :key="dia.id">
+                <div v-if="fulldatetime == dia.id">
+                    <div v-if="fulldatetime == dia.id ? this.diaActual = dia.date : ''"></div>
+                    <p v-show="fulldatetime">Hoy es tu día. ¡A comerse el <strong>
+                            <span class="dia">{{ dia.date }}</span>
+                        </strong>!</p>
+                </div>
+            </div>
+            <div v-if="this.galleta" class="modalGalleta">
+                <h4>¡Genial!Ya has completado el menú de hoy.</h4>
+                <img src="../../public/assets/galletas.png" alt="">
+            </div>
             <div class="calories_counter">
                 <div class="calories_counter1">
                     <div class="each">
@@ -54,7 +65,7 @@
                     </a>
                 </div>
                 <div v-if="activetab === `${menu.tab}`" class="day tabcontent"
-                    v-bind:class="[activetab === '2' ? 'second' : activetab === '3' ? 'third' : '']">
+                    v-bind:class="[activetab === '2' ? 'second' : activetab === '3' ? 'third' : activetab === '4' ? 'four' : activetab === '5' ? 'five' : '']">
                     <div>
                         <div class="meals">
                             <div class="meal-item">
@@ -63,11 +74,11 @@
                                     <img class="img-item" :src="menu.imgBreakfast" alt="" width="100" height="150" />
                                 </div>
                                 <p>{{ menu.breakfast }}</p>
-                                <div class="meal-kcal">
+                                <div v-if="menu.day == this.diaActual" class="meal-kcal">
                                     <p>{{ menu.kcalBreakfast }} kcal</p>
                                     <label class="check-kcal">
                                         <input type="checkbox"
-                                            @click="countingKcals(menu.kcalLunch, menu.carbsLunch, menu.protesLunch, menu.fatsLunch)">
+                                            @click="countingKcals(menu.kcalBreakfast, menu.carbsBreakfast, menu.protesBreakfast, menu.fatsBreakfast)">
                                         <div class="checkmark"></div>
                                     </label>
                                 </div>
@@ -78,7 +89,7 @@
                                     <img class="img-item" :src="menu.imgLunch" alt="" />
                                 </div>
                                 <p>{{ menu.lunch }}</p>
-                                <div class="meal-kcal">
+                                <div v-if="menu.day == this.diaActual" class="meal-kcal">
                                     <p>{{ menu.kcalLunch }} kcal</p>
                                     <label class="check-kcal">
                                         <input type="checkbox"
@@ -93,7 +104,7 @@
                                     <img class="img-item" :src="menu.imgSnack" alt="" width="100" height="150" />
                                 </div>
                                 <p>{{ menu.snack }}</p>
-                                <div class="meal-kcal">
+                                <div v-if="menu.day == this.diaActual" class="meal-kcal">
                                     <p>{{ menu.kcalSnack }} kcal</p>
                                     <label class="check-kcal">
                                         <input type="checkbox"
@@ -108,7 +119,7 @@
                                     <img class="img-item" :src="menu.imgDinner" alt="" width="100" height="150" />
                                 </div>
                                 <p>{{ menu.dinner }}</p>
-                                <div class="meal-kcal">
+                                <div v-if="menu.day == this.diaActual" class="meal-kcal">
                                     <p>{{ menu.kcalDinner }} kcal</p>
                                     <label class="check-kcal">
                                         <input type="checkbox"
@@ -136,13 +147,24 @@ export default {
             menus: [],
             loading: true,
             user,
-            activetab: "1",
+            activetab: '1',
             counter: 0,
             carbs: 0,
             protes: 0,
             fats: 0,
             restantes: 1252,
-            mssg: ""
+            mssg: "",
+            fulldatetime: '',
+            diaActual: '',
+            galleta: false,
+            dias: [
+
+                { id: "Mon", date: "lunes", dayTab: "1" },
+                { id: "Tue", date: "martes", dayTab: "2" },
+                { id: "Wed", date: "miércoles", dayTab: "3" },
+                { id: "Thu", date: "jueves", dayTab: "4" },
+                { id: "Sat", date: "viernes", dayTab: "5" }
+            ]
         }
     },
     created() {
@@ -163,13 +185,27 @@ export default {
                 this.mssg = "¡Ya has completado el día de hoy";
             } else {
                 this.counter += plus;
-                this.carbs += carb;
                 this.restantes -= plus;
+                this.carbs += carb;
                 this.protes += prote;
                 this.fats += fat;
             }
-        }
 
-    }
+            if (this.counter == 1252) {
+                this.galleta = true;
+            }
+        },
+        printFullDate: function () {
+            return new Date();
+        }
+    },
+    mounted: function () {
+
+        this.fulldatetime = this.printFullDate().toDateString().toString().slice(0, 3);
+        console.log(this.activetab)
+    },
+
 }
+
+
 </script>
