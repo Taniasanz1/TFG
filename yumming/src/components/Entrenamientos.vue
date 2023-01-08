@@ -17,21 +17,23 @@
               </div>
               <ul class="benefitlist">
                 <li>{{ sport.difficulty }}</li>
-                <li>{{ sport.durability }}</li>
+                <li>{{ sport.duration }}</li>
                 <li>{{ sport.bodyParts }}</li>
               </ul>
               <div class="btncontainer">
-                <button @click="creditModal()">Comprar</button>
+                <button @click="changeDetails()">Más detalles</button>
+                <!-- <button @click="creditModal()">Comprar</button> -->
               </div>
             </div>
             <div v-else class="card_box-info">
               <p class="text_box-title">{{ sport.name }}</p>
               <p class="text_box-body">Product description and details</p>
-
             </div>
             <div v-if="this.payment.isPayment && this.idSport == sport.idSport"></div>
             <div v-else-if="!this.idSports.find(id => id === sport.idSport)" class="card_box-footer">
               <span class="text_box-title">{{ sport.price }}</span>
+              <!-- <button @click="changeDetails()">Detalles</button> -->
+              <!-- <a href="url" target="_blank">Detalles</a> -->
               <div class="card_box-button" @click="pay(sport.idSport)">
                 <svg class="svg-icon" viewBox="0 0 20 20">
                   <path
@@ -69,11 +71,12 @@
               <!-- <p class="includes">Este Plan incluye:</p> -->
               <ul class="benefitlist">
                 <li>{{ sport.difficulty }}</li>
-                <li>{{ sport.durability }}</li>
+                <li>{{ sport.duration }}</li>
                 <li>{{ sport.bodyParts }}</li>
               </ul>
               <div class="btncontainer">
-                <button @click="creditModal()">Comprar</button>
+                <button @click="changeDetails()">Más detalles</button>
+                <!-- <button @click="creditModal()">Comprar</button> -->
               </div>
             </div>
             <div v-else class="card_box-info">
@@ -83,6 +86,8 @@
             <div v-if="this.payment.isPayment && this.idSport == sport.idSport"></div>
             <div v-else-if="!this.idSports.find(id => id === sport.idSport)" class="card_box-footer">
               <span class="text_box-title">{{ sport.price }}</span>
+              <!-- <button @click="changeDetails()">Detalles</button> -->
+              <!-- <a href="url" target="_blank">Detalles</a> -->
               <div class="card_box-button" @click="pay(sport.idSport)">
                 <svg class="svg-icon" viewBox="0 0 20 20">
                   <path
@@ -106,18 +111,71 @@
       </div>
     </div>
     <!-- MODAL DE ENTRENAMIENTO -->
-
+    <div v-if="this.tableSport" class="font-payment"></div>
     <div v-if="this.tableSport" class="table_box">
       <div v-for="sport of sports" :key="sport.id" class="card_table">
         <div v-if="sport.idSport == this.idSport" class="card_eachSPort">
           <img v-if="sport.idSport == this.idSport" :src="sport.imgTable" alt="">
           <div class="buttons_table">
             <button @click="closeTable()" class="close_button">Cerrar</button>
-            <a :href="sport.pdfTable" :download="sport.name">Descargar tabla</a>
+            <a :href="sport.pdfTable" :download="sport.name"><button class="cssbuttons-io-button">
+                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path
+                    d="M1 14.5a6.496 6.496 0 0 1 3.064-5.519 8.001 8.001 0 0 1 15.872 0 6.5 6.5 0 0 1-2.936 12L7 21c-3.356-.274-6-3.078-6-6.5zm15.848 4.487a4.5 4.5 0 0 0 2.03-8.309l-.807-.503-.12-.942a6.001 6.001 0 0 0-11.903 0l-.12.942-.805.503a4.5 4.5 0 0 0 2.029 8.309l.173.013h9.35l.173-.013zM13 12h3l-4 5-4-5h3V8h2v4z"
+                    fill="currentColor"></path>
+                </svg>
+                <span>Descargar</span>
+              </button></a>
+
           </div>
         </div>
       </div>
     </div>
+
+
+
+    <!-- DETALLES DEL ENTRENAMIENTO -->
+    <div v-if="this.details" class="font-payment"></div>
+    <div v-if="this.details" class="details">
+      <div v-for="sport of sports" :key="sport.id">
+        <div v-if="this.idSport == sport.idSport" class="details-each">
+          <h1>Entrenamiento de {{ sport.name }}</h1>
+          <div class="flex-sport">
+            <div class="details-text">
+              <p>{{ sport.description }}</p>
+              <div class="caracteristicas">
+                <p class="title-caracteristicas">Características de esta tabla de ejercicios:</p>
+                <ul class="benefitss">
+                  <li><strong>Dificultad:</strong> {{ sport.difficulty }}</li>
+                  <li><strong>Duración del entreno:</strong> {{ sport.duration }}</li>
+                  <li><strong>Partes del cuerpo que se trabajan:</strong> {{ sport.bodyParts }}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="framebtn">
+              <iframe width="400" height="215" :src="sport.video" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+              <div class="btncontainer">
+                <button @click="creditModal()">Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -136,21 +194,26 @@
               <div class="dot"></div>
             </div>
           </div>
-          <label for="number">Número de crédito:</label><br />
-          <div class="input-icons-credit">
-            <input class="input" type="text" name="number" id="number" placeholder="1234 1234 1234 1234 " required />
-            <div class="creditcards-icons">
-              <img src="../../public/assets/visa.png" alt="" width="30" height="25">
-              <img src="../../public/assets/american-express.png" alt="" width="30" height="25">
-              <img src="../../public/assets/mastercard.png" alt="" width="30" height="25">
+          <form>
+            <label for="number">Número de tarjeta de crédito:</label><br />
+            <div class="input-icons-credit">
+              <input class="input" type="text" name="number" id="number" placeholder="1234 1234 1234 1234 " required />
+              <div class="creditcards-icons">
+                <img src="../../public/assets/visa.png" alt="" width="30" height="25">
+                <img src="../../public/assets/american-express.png" alt="" width="30" height="25">
+                <img src="../../public/assets/mastercard.png" alt="" width="30" height="25">
+              </div>
             </div>
-          </div>
-          <br />
-          <input class="input" type="text" name="date" id="date" placeholder="MM/YY" required>
-          <input class="input" type="text" name="cvc" id="cvc" placeholder="CVC" required>
-          <br />
-          <label for="name">Nombre del titular:</label>
-          <input class="input" type="text" name="name" id="name" required>
+            <br />
+            <label for="date">Fecha de expedición:</label>
+            <input class="input" type="text" name="date" id="date" placeholder="MM/YY" required><br />
+            <label for="cvc">CVC:</label>
+            <input class="input" type="text" name="cvc" id="cvc" placeholder="CVC" required>
+            <br />
+            <label for="name">Nombre del titular:</label>
+            <input class="input" type="text" name="name" id="name" required><br />
+            <!-- <input type="submit" value="Pagar" name="pagar" @click="updateSport()"> -->
+          </form>
           <button class="pago-btn btn-1" @click="updateSport()">Pagar</button>
         </div>
       </div>
@@ -172,6 +235,7 @@ export default {
       idSports: [],
       user,
       tableSport: false,
+      details: false,
     }
   },
   created() {
@@ -194,6 +258,7 @@ export default {
 
     creditModal() {
       this.creditCard.isCredit = true;
+      this.details = false;
     },
 
     closeCreditModal() {
@@ -225,6 +290,9 @@ export default {
     },
     closeTable() {
       this.tableSport = false;
+    },
+    changeDetails() {
+      this.details = true;
     }
 
   }

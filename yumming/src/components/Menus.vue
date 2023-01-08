@@ -159,11 +159,11 @@ export default {
             galleta: false,
             dias: [
 
-                { id: "Mon", date: "lunes", dayTab: "1" },
+                { id: "Sun", date: "lunes", dayTab: "1" },
                 { id: "Tue", date: "martes", dayTab: "2" },
                 { id: "Wed", date: "miércoles", dayTab: "3" },
                 { id: "Thu", date: "jueves", dayTab: "4" },
-                { id: "Sat", date: "viernes", dayTab: "5" }
+                { id: "Fri", date: "viernes", dayTab: "5" }
             ]
         }
     },
