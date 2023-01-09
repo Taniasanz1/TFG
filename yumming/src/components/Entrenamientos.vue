@@ -141,6 +141,9 @@
       <div v-for="sport of sports" :key="sport.id">
         <div v-if="this.idSport == sport.idSport" class="details-each">
           <h1>Entrenamiento de {{ sport.name }}</h1>
+          <div @click="closeDetails()" class="close_tab">
+            <img src="../../public/assets/close.png" alt="" width="20" height="20">
+          </div>
           <div class="flex-sport">
             <div class="details-text">
               <p>{{ sport.description }}</p>
@@ -170,31 +173,22 @@
 
 
 
-
-
-
-
-
-
-
-
-
     <!-- MODAL DE TARJETA DE PAGO -->
     <div v-if="this.creditCard.isCredit" class="font-payment"></div>
     <div v-if="this.creditCard.isCredit" class="form-payment">
       <div class="pay work">
-        <div class="img-section">
-        </div>
-        <div class="pay-desc">
-          <div class="pay-header">
-            <div class="pay-title">Proceso de pago</div>
-            <div class="pay-menu">
-              <div class="dot"></div>
-              <div class="dot"></div>
-              <div class="dot"></div>
-            </div>
+        <form>
+          <div class="img-section">
           </div>
-          <form>
+          <div class="pay-desc">
+            <div class="pay-header">
+              <div class="pay-title">Proceso de pago</div>
+              <div class="pay-menu">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+            </div>
             <label for="number">Número de tarjeta de crédito:</label><br />
             <div class="input-icons-credit">
               <input class="input" type="text" name="number" id="number" placeholder="1234 1234 1234 1234 " required />
@@ -206,16 +200,16 @@
             </div>
             <br />
             <label for="date">Fecha de expedición:</label>
-            <input class="input" type="text" name="date" id="date" placeholder="MM/YY" required><br />
+            <input class="input" type="text" name="date" id="date" placeholder="MM/YY" required /><br />
             <label for="cvc">CVC:</label>
-            <input class="input" type="text" name="cvc" id="cvc" placeholder="CVC" required>
+            <input class="input" type="text" name="cvc" id="cvc" placeholder="CVC" required />
             <br />
             <label for="name">Nombre del titular:</label>
-            <input class="input" type="text" name="name" id="name" required><br />
-            <!-- <input type="submit" value="Pagar" name="pagar" @click="updateSport()"> -->
-          </form>
-          <button class="pago-btn btn-1" @click="updateSport()">Pagar</button>
-        </div>
+            <input class="input" type="text" name="name" id="name" required /><br />
+            <input type="submit" value="Pagar" name="pagar" @click="updateSport()">
+            <!-- <button class="pago-btn btn-1" @click="updateSport()">Pagar</button> -->
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -293,6 +287,9 @@ export default {
     },
     changeDetails() {
       this.details = true;
+    },
+    closeDetails() {
+      this.details = false;
     }
 
   }

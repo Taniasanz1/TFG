@@ -7,8 +7,6 @@ const UsersSchema = new Schema({
     name: String,
     email: String,
     pass: String,
-    level: Number,
-    isPro: Boolean,
     idSport: Array,
 });
 

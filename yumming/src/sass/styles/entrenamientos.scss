@@ -640,3 +640,12 @@
 .cssbuttons-io-button:active {
     box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
 }
+
+.close_tab {
+    cursor: pointer;
+    //margin-left: 50rem;
+    position: absolute;
+    top: 2rem;
+    left: 54rem;
+
+}
