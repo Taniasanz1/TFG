@@ -13,8 +13,6 @@
                     <label for="email">
                         <p>Email:</p>
                     </label>
-                    <!-- <input name="email" id="email" type="email" @change="setUserProperty($event)" placeholder="Email"
-                        pattern="+@.+" required> -->
                     <input name="email" id="email" type="email" @change="setEmail($event)" placeholder="Email" />
                     <p v-if="this.errorLEmail" class="errorform">Complete con un email válido.</p>
                     <p v-if="this.errorUser">El usuario no existe.</p>
@@ -36,21 +34,16 @@
             <!-- FORMULARIO REGISTRO -->
             <div v-else class="register">
                 <div class="form-group">
-                    <!-- <form> -->
                     <h1 class="form-title">Registrar</h1>
                     <label for="name">
                         <p>Nombre y apellidos:</p>
                     </label>
-                    <!-- <input name="name" id="name" type="text" @change="setUserProperty($event)" placeholder="Nombre"
-                            required /> -->
                     <input name="name" id="name" type="text" @change="setName($event)" placeholder="Nombre" />
                     <p v-if="this.errorRName" class="errorform">Complete con un nombre.</p>
 
                     <label for="email">
                         <p>Email:</p>
                     </label>
-                    <!-- <input name="email" id="email" type="email" @change="setUserProperty($event)"
-                            placeholder="Email" pattern="+@.+" required> -->
                     <input name="email" id="email" type="email" @change="setEmail($event)" placeholder="Email" />
                     <p v-if="this.errorREmail" class="errorform">Complete con un email.</p>
                     <p v-if="this.errorRNamesEmail" class="errorform">El email debe ser válido. Debe incluir @ y .</p>
@@ -58,13 +51,11 @@
                     <label for="pass">
                         <p>Contraseña:</p>
                     </label>
-                    <!-- <input name="pass" id="pass" type="password" @change="setUserProperty($event)"
-                            placeholder="Password" required> -->
                     <input name="pass" id="pass" type="password" @change="setPass($event)" placeholder="Password" />
                     <p v-if="this.errorRPass" class="errorform">Complete con una contraseña.</p>
 
                     <button @click="register()">Registrarse</button>
-                    <!-- </form> -->
+
                     <p>¿Tienes una cuenta? <a href="#" @click="registerActive = !registerActive">Entra aquí</a>
                     </p>
                 </div>
@@ -219,12 +210,11 @@ export default {
                     .then(data => {
                         if (data.user == null) {
                             this.errorUser = true;
-                            console.log("El usuario no existe");
+
                         } else {
                             if (data.user.pass != this.user.properties.pass) {
                                 this.errorPass = true;
-                                console.log("Las contraseñas no coinciden");
-                                console.log(this);
+
                             } else {
 
                                 this.user.properties = data.user;

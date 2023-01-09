@@ -8,6 +8,7 @@ const UsersSchema = new Schema({
     email: String,
     pass: String,
     idSport: Array,
+    calorias: Array
 });
 
 const UsersModel = mongoose.model('usuarios', UsersSchema)

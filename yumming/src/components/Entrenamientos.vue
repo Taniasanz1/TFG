@@ -30,7 +30,7 @@
               <p class="text_box-body">Product description and details</p>
             </div>
             <div v-if="this.payment.isPayment && this.idSport == sport.idSport"></div>
-            <div v-else-if="!this.idSports.find(id => id === sport.idSport)" class="card_box-footer">
+            <div v-else-if="!this.user.properties.idSport.find(id => id === sport.idSport)" class="card_box-footer">
               <span class="text_box-title">{{ sport.price }}</span>
               <!-- <button @click="changeDetails()">Detalles</button> -->
               <!-- <a href="url" target="_blank">Detalles</a> -->
@@ -50,7 +50,7 @@
             </div>
             <div class="card_box-check" v-else>
               <img src="../../public/assets/marca-de-verificacion.png" alt="">
-              <p @click="eachTable()">Accede al entrenamiento</p>
+              <p @click="eachTable(sport.idSport)">Accede al entrenamiento</p>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@
               <p class="text_box-body">Product description and details</p>
             </div>
             <div v-if="this.payment.isPayment && this.idSport == sport.idSport"></div>
-            <div v-else-if="!this.idSports.find(id => id === sport.idSport)" class="card_box-footer">
+            <div v-else-if="!this.user.properties.idSport.find(id => id === sport.idSport)" class="card_box-footer">
               <span class="text_box-title">{{ sport.price }}</span>
               <!-- <button @click="changeDetails()">Detalles</button> -->
               <!-- <a href="url" target="_blank">Detalles</a> -->
@@ -104,30 +104,41 @@
             </div>
             <div class="card_box-check" v-else>
               <img src="../../public/assets/marca-de-verificacion.png" alt="">
-              <p @click="eachTable()">Accede al entrenamiento</p>
+              <p @click="eachTable(sport.idSport)">Accede al entrenamiento</p>
             </div>
           </div>
         </div>
       </div>
     </div>
     <!-- MODAL DE ENTRENAMIENTO -->
-    <div v-if="this.tableSport" class="font-payment"></div>
+    <div v-if="this.tableSport" class="font-payment1"></div>
     <div v-if="this.tableSport" class="table_box">
       <div v-for="sport of sports" :key="sport.id" class="card_table">
         <div v-if="sport.idSport == this.idSport" class="card_eachSPort">
-          <img v-if="sport.idSport == this.idSport" :src="sport.imgTable" alt="">
-          <div class="buttons_table">
-            <button @click="closeTable()" class="close_button">Cerrar</button>
-            <a :href="sport.pdfTable" :download="sport.name"><button class="cssbuttons-io-button">
-                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 0h24v24H0z" fill="none"></path>
-                  <path
-                    d="M1 14.5a6.496 6.496 0 0 1 3.064-5.519 8.001 8.001 0 0 1 15.872 0 6.5 6.5 0 0 1-2.936 12L7 21c-3.356-.274-6-3.078-6-6.5zm15.848 4.487a4.5 4.5 0 0 0 2.03-8.309l-.807-.503-.12-.942a6.001 6.001 0 0 0-11.903 0l-.12.942-.805.503a4.5 4.5 0 0 0 2.029 8.309l.173.013h9.35l.173-.013zM13 12h3l-4 5-4-5h3V8h2v4z"
-                    fill="currentColor"></path>
-                </svg>
-                <span>Descargar</span>
-              </button></a>
-
+          <div class="card_img">
+            <h2>Tabla de ejercicios de {{ sport.name }}</h2>
+            <img class="img_table" :src="sport.imgTable" alt="">
+          </div>
+          <div>
+            <div @click="closeTable()" class="button_close">
+              <img src="../../public/assets/close.png" alt="">
+            </div>
+            <div class="buttons_table">
+              <a :href="sport.pdfTable" :download="sport.name"><button class="cssbuttons-io-button">
+                  <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M1 14.5a6.496 6.496 0 0 1 3.064-5.519 8.001 8.001 0 0 1 15.872 0 6.5 6.5 0 0 1-2.936 12L7 21c-3.356-.274-6-3.078-6-6.5zm15.848 4.487a4.5 4.5 0 0 0 2.03-8.309l-.807-.503-.12-.942a6.001 6.001 0 0 0-11.903 0l-.12.942-.805.503a4.5 4.5 0 0 0 2.029 8.309l.173.013h9.35l.173-.013zM13 12h3l-4 5-4-5h3V8h2v4z"
+                      fill="currentColor"></path>
+                  </svg>
+                  <span class="descargar">Descargar</span>
+                </button></a>
+              <div class="checkboxcheck">
+                <label><input type="checkbox" @click="isQuemadas($event, sport.kcal)" :disabled="this.checked == true">
+                </label>
+                <p class="textcheck">{{ sport.kcal }} calorías quemadas.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -171,51 +182,56 @@
 
 
 
-
-
     <!-- MODAL DE TARJETA DE PAGO -->
     <div v-if="this.creditCard.isCredit" class="font-payment"></div>
     <div v-if="this.creditCard.isCredit" class="form-payment">
       <div class="pay work">
-        <form>
-          <div class="img-section">
-          </div>
-          <div class="pay-desc">
-            <div class="pay-header">
-              <div class="pay-title">Proceso de pago</div>
-              <div class="pay-menu">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-              </div>
+
+        <div class="img-section">
+        </div>
+        <div class="pay-desc">
+          <div class="pay-header">
+            <div class="pay-title">Proceso de pago</div>
+            <div class="pay-menu">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
             </div>
-            <label for="number">Número de tarjeta de crédito:</label><br />
-            <div class="input-icons-credit">
-              <input class="input" type="text" name="number" id="number" placeholder="1234 1234 1234 1234 " required />
-              <div class="creditcards-icons">
-                <img src="../../public/assets/visa.png" alt="" width="30" height="25">
-                <img src="../../public/assets/american-express.png" alt="" width="30" height="25">
-                <img src="../../public/assets/mastercard.png" alt="" width="30" height="25">
-              </div>
-            </div>
-            <br />
-            <label for="date">Fecha de expedición:</label>
-            <input class="input" type="text" name="date" id="date" placeholder="MM/YY" required /><br />
-            <label for="cvc">CVC:</label>
-            <input class="input" type="text" name="cvc" id="cvc" placeholder="CVC" required />
-            <br />
-            <label for="name">Nombre del titular:</label>
-            <input class="input" type="text" name="name" id="name" required /><br />
-            <input type="submit" value="Pagar" name="pagar" @click="updateSport()">
-            <!-- <button class="pago-btn btn-1" @click="updateSport()">Pagar</button> -->
           </div>
-        </form>
+          <!-- <form> -->
+          <label for="number">Número de tarjeta de crédito:</label>
+          <div class="input-icons-credit">
+            <input class="input" type="number" name="number" id="number" placeholder="1234 1234 1234 1234 "
+              @change="setIban($event)" max="16" />
+            <p v-if="this.errorIban" class="errorform">Introduce un número de tarjeta bancaria.</p>
+            <div class="creditcards-icons">
+              <img src="../../public/assets/visa.png" alt="" width="30" height="25">
+              <img src="../../public/assets/american-express.png" alt="" width="30" height="25">
+              <img src="../../public/assets/mastercard.png" alt="" width="30" height="25">
+            </div>
+          </div>
+
+          <label for="date">Fecha de expedición:</label>
+          <input class="input" type="date" name="date" id="date" placeholder="MM/YY" @change="setFechaExp($event)" />
+          <p v-if="this.errorfechaExp" class="errorform">Introduce la fecha de expedición de la tarjeta.</p>
+          <label for="cvc">CVC:</label>
+          <input class="input" type="number" name="cvc" id="cvc" placeholder="CVC" @change="setCvc($event)" min="3"
+            max="3" /><br />
+          <p v-if="this.errorCvc" class="errorform">Introduce el cvc de la tarjeta.</p>
+          <label for="name">Nombre del titular:</label>
+          <input class="input" type="text" name="name" id="name" @change="setTitular($event)" />
+          <p v-if="this.errorTitular" class="errorform">Introduce el nombre del titular de la tarjeta.</p><br />
+          <!-- <input type="submit" value="Pagar" name="pagar" @click="updateSport()"> -->
+          <button class="pago-btn btn-1" @click="updateSport()">Pagar</button>
+          <!-- </form> -->
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { payment, creditCard, user } from '../globalStates';
+
+import { payment, creditCard, user, quemadas } from '../globalStates';
 
 export default {
   data() {
@@ -230,6 +246,16 @@ export default {
       user,
       tableSport: false,
       details: false,
+      iban: '',
+      fechaExp: '',
+      cvc: '',
+      titular: '',
+      errorIban: false,
+      errorfechaExp: false,
+      errorCvc: false,
+      errorTitular: false,
+      quemadas,
+      checked: false,
     }
   },
   created() {
@@ -261,26 +287,43 @@ export default {
     },
 
     async updateSport() {
-      const requestOptions = {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idSport: this.idSports })
-      };
+      if (this.iban == null || this.iban == '') {
+        this.errorIban = true;
+      } else if (this.fechaExp == null || this.fechaExp == '') {
+        this.errorfechaExp = true;
+        this.errorIban = false;
+      } else if (this.cvc == null || this.cvc == '') {
+        this.errorCvc = true;
+        this.errorfechaExp = false;
+        this.errorIban = false;
+      } else if (this.titular == null || this.titular == '') {
+        this.errorTitular = true;
+        this.errorCvc = false;
+        this.errorfechaExp = false;
+        this.errorIban = false;
+      } else {
+        this.errorTitular = false;
+        this.errorCvc = false;
+        this.errorfechaExp = false;
+        this.errorIban = false;
 
-
-      await fetch('http://localhost:8081/users/' + this.user.properties.email, requestOptions)
-        .then(res => res.json())
-        .then(data => {
-          this.user.properties.idSport = data.user.idSport;
-        });
-      this.payment.isPayment = false;
-      this.creditCard.isCredit = false;
-      this.loading = false;
-      this.idSports.push(this.idSport);
+        const requestOptions = {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ idSport: this.idSport })
+        };
+        await fetch('http://localhost:8081/users/' + this.user.properties.email, requestOptions)
+          .then(res => res.json());
+        this.payment.isPayment = false;
+        this.creditCard.isCredit = false;
+        this.loading = false;
+        this.user.properties.idSport.push(this.idSport);
+      }
     },
 
-    eachTable() {
+    eachTable(idd) {
       this.tableSport = true;
+      this.idSport = idd;
     },
     closeTable() {
       this.tableSport = false;
@@ -290,7 +333,32 @@ export default {
     },
     closeDetails() {
       this.details = false;
+    },
+
+    setIban(event) {
+      this.iban = event.target.value;
+    },
+    setFechaExp(event) {
+      this.fechaExp = event.target.value;
+    },
+    setCvc(event) {
+      this.cvc = event.target.value;
+    },
+    setTitular(event) {
+      this.titular = event.target.value;
+    },
+    isQuemadas(event, quem) {
+
+      if (event.target.checked) {
+
+        this.quemadas.cont += quem;
+        this.checked = true;
+
+      }
+
     }
+
+
 
   }
 }

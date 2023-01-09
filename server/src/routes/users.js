@@ -21,11 +21,17 @@ router.get('/users/:email', async (req, res) => {
 
 router.put('/users/:email', async (req, res) => {
     const email = req.params.email;
-    const userDB = await Users.findOneAndUpdate({ email }, { idSport: req.body.idSport });
+    const userDB = await Users.findOneAndUpdate({ email }, { "$push": { idSport: req.body.idSport } });
     const response = userDB == null ? { user: null } : { user: userDB };
     res.send(response);
 })
 
 
+router.put('/users/:email', async (req, res) => {
+    const email = req.params.email;
+    const userDB = await Users.findOneAndUpdate({ email }, { "$push": { calorias: req.body.calorias } });
+    const response = userDB == null ? { user: null } : { user: userDB };
+    res.send(response);
+})
 
 module.exports = router;

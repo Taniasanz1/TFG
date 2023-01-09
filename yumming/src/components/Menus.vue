@@ -27,7 +27,7 @@
                         <p>Restantes</p>
                     </div>
                     <div class="each">
-                        <h4>0</h4>
+                        <h4>{{ this.quemadas.cont }}</h4>
                         <p>Quemadas</p>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                                     <p>{{ menu.kcalBreakfast }} kcal</p>
                                     <label class="check-kcal">
                                         <input type="checkbox"
-                                            @click="countingKcals(menu.kcalBreakfast, menu.carbsBreakfast, menu.protesBreakfast, menu.fatsBreakfast)">
+                                            @click="countingKcals($event, menu.kcalBreakfast, menu.carbsBreakfast, menu.protesBreakfast, menu.fatsBreakfast)">
                                         <div class="checkmark"></div>
                                     </label>
                                 </div>
@@ -92,8 +92,8 @@
                                 <div v-if="menu.day == this.diaActual" class="meal-kcal">
                                     <p>{{ menu.kcalLunch }} kcal</p>
                                     <label class="check-kcal">
-                                        <input type="checkbox"
-                                            @click="countingKcals(menu.kcalLunch, menu.carbsLunch, menu.protesLunch, menu.fatsLunch)">
+                                        <input type="checkbox" value="lunch"
+                                            @click="countingKcals($event, menu.kcalLunch, menu.carbsLunch, menu.protesLunch, menu.fatsLunch)">
                                         <div class="checkmark"></div>
                                     </label>
                                 </div>
@@ -107,8 +107,8 @@
                                 <div v-if="menu.day == this.diaActual" class="meal-kcal">
                                     <p>{{ menu.kcalSnack }} kcal</p>
                                     <label class="check-kcal">
-                                        <input type="checkbox"
-                                            @click="countingKcals(menu.kcalSnack, menu.carbsSnack, menu.protesSnack, menu.fatsSnack)">
+                                        <input type="checkbox" value="snack"
+                                            @click="countingKcals($event, menu.kcalSnack, menu.carbsSnack, menu.protesSnack, menu.fatsSnack)">
                                         <div class="checkmark"></div>
                                     </label>
                                 </div>
@@ -122,8 +122,8 @@
                                 <div v-if="menu.day == this.diaActual" class="meal-kcal">
                                     <p>{{ menu.kcalDinner }} kcal</p>
                                     <label class="check-kcal">
-                                        <input type="checkbox"
-                                            @click="countingKcals(menu.kcalDinner, menu.carbsDinner, menu.protesDinner, menu.fatsDinner)">
+                                        <input type="checkbox" value="dinner"
+                                            @click="countingKcals($event, menu.kcalDinner, menu.carbsDinner, menu.protesDinner, menu.fatsDinner)">
                                         <div class="checkmark"></div>
                                     </label>
                                 </div>
@@ -136,7 +136,7 @@
     </div>
 </template>
 <script>
-import { user } from "../globalStates"
+import { user, quemadas, dias } from "../globalStates"
 
 
 export default {
@@ -157,14 +157,21 @@ export default {
             fulldatetime: '',
             diaActual: '',
             galleta: false,
-            dias: [
+            quemadas,
+            dias,
+            breakChecked: false,
+            lunchChecked: false,
+            snackChecked: false,
+            dinnerChecked: false,
 
-                { id: "Mon", date: "lunes", dayTab: "1" },
-                { id: "Tue", date: "martes", dayTab: "2" },
-                { id: "Wed", date: "miércoles", dayTab: "3" },
-                { id: "Thu", date: "jueves", dayTab: "4" },
-                { id: "Fri", date: "viernes", dayTab: "5" }
-            ]
+            // dias: [
+
+            //     { id: "Mon", date: "lunes", dayTab: "1" },
+            //     { id: "Tue", date: "martes", dayTab: "2" },
+            //     { id: "Wed", date: "miércoles", dayTab: "3" },
+            //     { id: "Thu", date: "jueves", dayTab: "4" },
+            //     { id: "Fri", date: "viernes", dayTab: "5" }
+            // ]
         }
     },
     created() {
@@ -179,21 +186,52 @@ export default {
             this.menus = response.menus;
             this.loading = false;
         },
-        countingKcals(plus, carb, prote, fat) {
-            if (this.counter >= 1252) {
-                this.counter = 1252;
-                this.mssg = "¡Ya has completado el día de hoy";
-            } else {
-                this.counter += plus;
-                this.restantes -= plus;
-                this.carbs += carb;
-                this.protes += prote;
-                this.fats += fat;
-            }
+        async countingKcals(event, plus, carb, prote, fat) {
 
             if (this.counter == 1252) {
                 this.galleta = true;
+            } else {
+                if (event.target.checked) {
+                    this.counter += plus;
+                    this.restantes -= plus;
+                    this.carbs += carb;
+                    this.protes += prote;
+                    this.fats += fat;
+                    if (event.target.value == "breakfast") {
+                        this.breakChecked = true;
+                        event.target.checked = this.breakChecked;
+
+                    } else if (event.target.value == "lunch") {
+                        this.lunchChecked = true;
+                        event.target.checked = this.lunchChecked;
+
+                    } else if (event.target.value == "snack") {
+                        this.snackChecked = true;
+                        event.target.checked = this.snackChecked;
+
+                    } else if (event.target.value == "dinner") {
+                        this.dinnerChecked = true;
+                        event.target.checked = this.dinnerChecked;
+                    }
+
+                    const requestOptions = {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ calorias: event.target.value })
+                    };
+                    await fetch('http://localhost:8081/users/' + this.user.properties.email, requestOptions)
+                        .then(res => res.json());
+
+                    this.user.properties.calorias.push(event.target.value);
+                } else {
+                    this.counter -= plus;
+                    this.restantes += plus;
+                    this.carbs -= carb;
+                    this.protes -= prote;
+                    this.fats -= fat;
+                }
             }
+
         },
         printFullDate: function () {
             return new Date();
@@ -202,7 +240,6 @@ export default {
     mounted: function () {
 
         this.fulldatetime = this.printFullDate().toDateString().toString().slice(0, 3);
-        console.log(this.activetab)
     },
 
 }
